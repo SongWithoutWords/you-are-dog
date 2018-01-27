@@ -4,49 +4,71 @@ using UnityEngine.UI;
 
 public enum AlertState
 {
-    calm,
-    alert,
-    aware,
-    gtfo
+    Relaxed,
+    Alert,
+    Aware,
+    Escape
 }
 
 public class RestaurantState : MonoBehaviour
 {
-    public int alertDecayRate = 1;
-    public int alertThreshold = 10000;
-
-    public AlertState alert = AlertState.calm;
-    public int alertLevel = 0;
-
     public Text alertText;
 
-    // Use this for initialization
-    void Start() {}
+    public float alertDecayPerSecond = 1;
+    public float thresholdAlert = 20;
+    public float thresholdAware = 40;
+    public float thresholdEscape = 60;
 
-    public void ReduceAlert()
+    [HideInInspector]
+    public AlertState alertState = AlertState.Relaxed;
+
+    [HideInInspector]
+    public float alertLevel = 0;
+
+    AlertState LevelToState(float level)
     {
-        alertLevel -= alertDecayRate;
-        if ((alert == AlertState.calm || alert == AlertState.alert) && alertLevel < 0)
+        return
+            level >= thresholdEscape ? AlertState.Escape :
+            level >= thresholdAware ? AlertState.Aware :
+            level >= thresholdAlert ? AlertState.Alert :
+            AlertState.Relaxed;
+    }
+
+    float Threshold(AlertState state)
+    {
+        return
+            state >= AlertState.Escape ? thresholdEscape :
+            state >= AlertState.Aware ? thresholdAware :
+            state >= AlertState.Alert ? thresholdAlert :
+            0;
+    }
+
+    void ReduceAlert()
+    {
+        alertLevel -= alertDecayPerSecond * Time.fixedDeltaTime;
+        alertLevel = Mathf.Max(0, alertLevel);
+    }
+
+    void UpdateState()
+    {
+        var nextState = LevelToState(alertLevel);
+        if (nextState > alertState)
         {
-            alertLevel = 0;
+            // Add half the threshold, to prevent rapid state transitions
+            alertLevel += (Threshold(nextState) - Threshold(alertState)) / 2;
+            alertState = nextState;
+        }
+        else if (alertState <= AlertState.Alert)
+        {
+            // We can only transition down from alert. 
+            // Once they're aware, there's no going back
+            alertState = nextState;
         }
     }
 
-    public void UpdateState()
+    void UpdateText()
     {
-        if (alertLevel >= alertThreshold)
-        {
-            alert = AlertState.alert;
-        }
-        else
-        {
-            alert = AlertState.calm;
-        }
-    }
-
-    public void UpdateText()
-    {
-        alertText.text = "Alert level: " + alert.ToString() + " " + alertLevel.ToString();
+        alertText.text = "Alert level: " + alertState + " " + alertLevel;
     }
 
     // Update is called once per frame

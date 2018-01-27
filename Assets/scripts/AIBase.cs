@@ -12,6 +12,6 @@ public abstract class AIBase : MonoBehaviour
     void FixedUpdate()
     {
         var restaurant = FindObjectOfType<RestaurantState>();
-        strategy = strategy.Update(gameObject, restaurant.alert);
+        strategy = strategy.Update(gameObject, restaurant.alertState);
     }
 }

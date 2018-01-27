@@ -21,7 +21,7 @@ public class Jostle : MonoBehaviour
         if (extrinsicAcceleration.magnitude > accelerationThreshold)
         {
             var restaurant = GameObject.FindObjectOfType<RestaurantState>();
-            restaurant.alert += alertAmount;
+            restaurant.alertLevel += alertAmount;
         }
     }
 }

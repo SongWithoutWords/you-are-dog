@@ -26,10 +26,10 @@ public class WaiterAIComponent : AIBase
             {
                 switch (alertState)
                 {
-                    case AlertState.calm: return new RelaxedStrategy();
-                    case AlertState.alert: return new AlertStrategy();
-                    case AlertState.aware: return new AwareStrategy();
-                    case AlertState.gtfo: return new EscapeStrategy();
+                    case AlertState.Relaxed: return new RelaxedStrategy();
+                    case AlertState.Alert: return new AlertStrategy();
+                    case AlertState.Aware: return new AwareStrategy();
+                    case AlertState.Escape: return new EscapeStrategy();
                     default: return this;
                 }
             }
@@ -43,10 +43,10 @@ public class WaiterAIComponent : AIBase
 
             switch (alertState)
             {
-                case AlertState.calm: return this;
-                case AlertState.alert: return this;
-                case AlertState.aware: return new AwareStrategy();
-                case AlertState.gtfo: return new EscapeStrategy();
+                case AlertState.Relaxed: return this;
+                case AlertState.Alert: return this;
+                case AlertState.Aware: return new AwareStrategy();
+                case AlertState.Escape: return new EscapeStrategy();
                 default: return this;
             }
         }
@@ -60,10 +60,10 @@ public class WaiterAIComponent : AIBase
             // The waiter, when relaxed, wanders.
             switch (alertState)
             {
-                case AlertState.calm: return new WanderStrategy();
-                case AlertState.alert: return new AlertStrategy();
-                case AlertState.aware: return new AwareStrategy();
-                case AlertState.gtfo: return new EscapeStrategy();
+                case AlertState.Relaxed: return new WanderStrategy();
+                case AlertState.Alert: return new AlertStrategy();
+                case AlertState.Aware: return new AwareStrategy();
+                case AlertState.Escape: return new EscapeStrategy();
                 default: return this;
             }
         }
@@ -93,10 +93,10 @@ public class WaiterAIComponent : AIBase
 
                 switch (alertState)
                 {
-                    case AlertState.calm: return new RelaxedStrategy();
-                    case AlertState.alert: return this;
-                    case AlertState.aware: return new AwareStrategy();
-                    case AlertState.gtfo: return new EscapeStrategy();
+                    case AlertState.Relaxed: return new RelaxedStrategy();
+                    case AlertState.Alert: return this;
+                    case AlertState.Aware: return new AwareStrategy();
+                    case AlertState.Escape: return new EscapeStrategy();
                     default: return this;
                 }
             }
@@ -104,10 +104,10 @@ public class WaiterAIComponent : AIBase
             // If the player isn't nearby, drop into the wander strategy.
             switch (alertState)
             {
-                case AlertState.calm: return new RelaxedStrategy();
-                case AlertState.alert: return new WanderStrategy();
-                case AlertState.aware: return new AwareStrategy();
-                case AlertState.gtfo: return new EscapeStrategy();
+                case AlertState.Relaxed: return new RelaxedStrategy();
+                case AlertState.Alert: return new WanderStrategy();
+                case AlertState.Aware: return new AwareStrategy();
+                case AlertState.Escape: return new EscapeStrategy();
                 default: return this;
             }
         }
@@ -134,10 +134,10 @@ public class WaiterAIComponent : AIBase
 
             switch (alertState)
             {
-                case AlertState.calm: return new RelaxedStrategy();
-                case AlertState.alert: return new AlertStrategy();
-                case AlertState.aware: return this;
-                case AlertState.gtfo: return new EscapeStrategy();
+                case AlertState.Relaxed: return new RelaxedStrategy();
+                case AlertState.Alert: return new AlertStrategy();
+                case AlertState.Aware: return this;
+                case AlertState.Escape: return new EscapeStrategy();
                 default: return this;
             }
         }
@@ -150,10 +150,10 @@ public class WaiterAIComponent : AIBase
         {
             switch (alertState)
             {
-                case AlertState.calm: return new RelaxedStrategy();
-                case AlertState.alert: return new AlertStrategy();
-                case AlertState.aware: return new AwareStrategy();
-                case AlertState.gtfo: return this;
+                case AlertState.Relaxed: return new RelaxedStrategy();
+                case AlertState.Alert: return new AlertStrategy();
+                case AlertState.Aware: return new AwareStrategy();
+                case AlertState.Escape: return this;
                 default: return this;
             }
         }
