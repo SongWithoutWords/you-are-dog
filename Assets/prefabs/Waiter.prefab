@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 12e8b14dfc02a614e91a2a7be881cf5b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationThreshold: 1
+  accelerationThreshold: 3
   alertAmount: 10
 --- !u!114 &114666589966241146
 MonoBehaviour:
