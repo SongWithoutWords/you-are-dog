@@ -25,6 +25,10 @@ public class RestaurantState : MonoBehaviour {
 	
     public void reduceAlert() {
         alertLevel -= alertDecayRate;
+        if (alertDecayRate < 0)
+        {
+            alertDecayRate = 0;
+        }
     }
 
     public void updateState()
