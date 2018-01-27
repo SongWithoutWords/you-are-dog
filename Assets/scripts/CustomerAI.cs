@@ -30,8 +30,7 @@ public class CustomerAI : AIBase
 
             if (exit != null)
             {
-                //exit.transform.
-                move.MoveTowards(exit);
+                move.MoveTowards(exit, gameObject.GetComponent<CustomerAI>().forcefullness);
             }
 
             GameObject.Destroy(gameObject, 0.0f);
