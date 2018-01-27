@@ -13,8 +13,6 @@ public class PlayerInput : MonoBehaviour
         var vertical = Input.GetAxisRaw("Vertical");
         var forceVector = new Vector2(horizontal, vertical);
 
-        var collider = gameObject.GetComponent<CircleCollider2D>();
-
         var rigidBody = gameObject.GetComponent<Rigidbody2D>();
 
         rigidBody.AddForce(forceVector, ForceMode2D.Impulse);
