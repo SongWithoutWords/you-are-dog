@@ -45,7 +45,7 @@ public class WaiterAIComponent : MonoBehaviour
         var playerTransform = player.GetComponent<Transform>();
 
         var transform = GetComponent<Transform>();
-        Vector3 offsetToPlayer = transform.position - playerTransform.position;
+        Vector3 offsetToPlayer = playerTransform.position - transform.position;
         float distanceSquaredToPlayer = offsetToPlayer.sqrMagnitude;
 
         Vector2 forceToPlayer = new Vector2(offsetToPlayer.x, offsetToPlayer.y);
@@ -63,7 +63,7 @@ public class WaiterAIComponent : MonoBehaviour
         var playerTransform = player.GetComponent<Transform>();
 
         var transform = GetComponent<Transform>();
-        Vector3 offsetToPlayer = transform.position - playerTransform.position;
+        Vector3 offsetToPlayer = playerTransform.position - transform.position;
         float distanceToPlayer = offsetToPlayer.magnitude;
 
         Vector2 forceToPlayer = new Vector2(offsetToPlayer.x, offsetToPlayer.y);
