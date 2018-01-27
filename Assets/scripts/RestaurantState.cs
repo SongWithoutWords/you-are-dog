@@ -11,8 +11,8 @@ public enum AlertState
 
 public class RestaurantState : MonoBehaviour {
 
-    const int alertDecayRate = 1;
-    const int alertThreshold = 50;
+    public int alertDecayRate = 1;
+    public int alertThreshold = 50;
 
     public AlertState alert;
     public int alertLevel;
