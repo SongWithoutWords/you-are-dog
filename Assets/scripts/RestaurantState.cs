@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using UnityEngine.UI;
 
 public enum AlertState
@@ -24,6 +23,20 @@ public class RestaurantState : MonoBehaviour
 
     [HideInInspector]
     public float alertLevel = 0;
+
+    void Start()
+    {
+        Jostle[] jostlables = FindObjectsOfType<Jostle>();
+        foreach (var jostle in jostlables)
+        {
+            jostle.RaiseJostleEvent += OnJostle;
+        }
+    }
+
+    void OnJostle(Jostle jostled)
+    {
+        alertLevel += jostled.alertAmount;
+    }
 
     AlertState LevelToState(float level)
     {

@@ -3,11 +3,21 @@
 [RequireComponent(typeof(Move))]
 public class Jostle : MonoBehaviour
 {
+    public delegate void JostleEventHandler(Jostle jostled);
+    public event JostleEventHandler RaiseJostleEvent;
+
     public float accelerationThreshold = 1.0f;
     public int alertAmount = 0;
 
     private Vector2 velocityPrev = Vector2.zero;
-    private bool isCollidingWithPlayer = false;
+
+    private enum PlayerCollisionState
+    {
+        None,
+        Enter,
+        Stay
+    }
+    private PlayerCollisionState playerCollisionState = PlayerCollisionState.None;
 
     void FixedUpdate()
     {
@@ -21,10 +31,14 @@ public class Jostle : MonoBehaviour
         var intrinsicAcceleration = move.Force / mass;
         var extrinsicAcceleration = acceleration - intrinsicAcceleration;
 
-        if (isCollidingWithPlayer && extrinsicAcceleration.magnitude > accelerationThreshold)
+        if (playerCollisionState == PlayerCollisionState.Enter
+            && extrinsicAcceleration.magnitude > accelerationThreshold)
         {
-            var restaurant = FindObjectOfType<RestaurantState>();
-            restaurant.alertLevel += alertAmount;
+            if (RaiseJostleEvent != null)
+            {
+                RaiseJostleEvent(this);
+            }
+            playerCollisionState = PlayerCollisionState.Stay;
         }
     }
 
@@ -32,7 +46,7 @@ public class Jostle : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerInput>() != null)
         {
-            isCollidingWithPlayer = true;
+            playerCollisionState = PlayerCollisionState.Enter;
         }
     }
 
@@ -40,7 +54,7 @@ public class Jostle : MonoBehaviour
     {
         if (collision.gameObject.GetComponent<PlayerInput>() != null)
         {
-            isCollidingWithPlayer = false;
+            playerCollisionState = PlayerCollisionState.None;
         }
     }
 }
