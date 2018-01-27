@@ -1,3 +1,35 @@
 dog stealth game
 
-you are a dog 
+Player goal is to get food in a restaurant without anyone noticing that you are a dog.
+
+Game phases:
+BEGIN:			A level starts by walking into a restaurant. A bell dings. The restaurant is RELAXED.
+RELAXED:		While RELAXED, collaborators will feed you if you are near them. This generates attention.
+ALERT:			Too much attention will cause the waiters to enter an ALERT state.
+				At this point they will begin to walk towards the player.
+AWARE:			If the player gets too close to a waiter during the ALERT phase, they will figure out that you are a dog and become AWARE.
+				At this point one waiter will attempt to get to the phone to call animal control, while the others will attempt to corner you.
+ESCAPE:			After a waiter calls animal control, a dog catcher shows up, and the ESCAPE phase begins.
+				At this point the player must flee the restaurant while avoiding the dog catcher.
+
+Stretch goals:
+Kitchen
+Multiplayer
+
+CODE:
+Player movement and interactions
+Customer AI
+- Relaxed, sitting down at their table.
+- When not paying attention, the player may steal their food without them noticing.
+- If something gets spilled on them, they get up and go to the bathroom.
+Collaborator AI
+- Feed player when the player is nearby.
+- Draw attention because they get excited.
+Waiter AI
+- Apply a force in the direction the player when ALERT which is scaled by distance to represent their diminished notice
+- Apply a greater force in the direction of the player when AWARE
+Dog Catcher AI
+- Walks through whatever he wants with SO MUCH FORCE
+Physics doodads
+- The game should have things to hit and bounce around
+
