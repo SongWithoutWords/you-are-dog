@@ -3,6 +3,7 @@
 [RequireComponent(typeof(Rigidbody2D))]
 public class FaceDirectionOfMotion : MonoBehaviour
 {
+    public float strength = 1.0f;
     void FixedUpdate()
     {
         var rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -18,5 +19,4 @@ public class FaceDirectionOfMotion : MonoBehaviour
 
         rigidBody.rotation += strength * Time.fixedDeltaTime * speed * angularDeviation;
     }
-    public float strength = 1.0f;
 }
