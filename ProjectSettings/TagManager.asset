@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Restaurant
   - Waiter
+  - FrontDoor
   layers:
   - Default
   - TransparentFX
