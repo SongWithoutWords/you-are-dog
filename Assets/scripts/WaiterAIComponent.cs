@@ -41,10 +41,7 @@ public class WaiterAIComponent : AIBase
 
             // Otherwise, the waiter applies force toward the target position so long as the restaurant is
             // relaxed or alert.
-            Vector2 forceToPlayer = offsetToTarget / distanceSquaredToTarget;
-
-            var move = gameObject.GetComponent<Move>();
-            move.AddForce(forceToPlayer);
+            gameObject.GetComponent<Move>().GravitateTowards(targetPosition);
 
             switch (alertState)
             {
@@ -90,11 +87,7 @@ public class WaiterAIComponent : AIBase
             // Move toward the player if the player is nearby between wandering target positions.
             if (distanceSquaredToPlayer < 2.0f)
             {
-                Vector2 forceToPlayer = new Vector2(offsetToPlayer.x, offsetToPlayer.y);
-                forceToPlayer /= distanceSquaredToPlayer;
-
-                var move = gameObject.GetComponent<Move>();
-                move.AddForce(forceToPlayer);
+                gameObject.GetComponent<Move>().GravitateTowards(player);
 
                 switch (alertState)
                 {
@@ -125,17 +118,8 @@ public class WaiterAIComponent : AIBase
         {
             // TODO phone animal control
             var player = GameObject.FindGameObjectWithTag("Player");
-            var playerTransform = player.GetComponent<Transform>();
 
-            var transform = gameObject.GetComponent<Transform>();
-            Vector3 offsetToPlayer = playerTransform.position - transform.position;
-            float distanceToPlayer = offsetToPlayer.magnitude;
-
-            Vector2 forceToPlayer = new Vector2(offsetToPlayer.x, offsetToPlayer.y);
-            forceToPlayer /= distanceToPlayer;
-
-            var move = gameObject.GetComponent<Move>();
-            move.AddForce(forceToPlayer);
+            gameObject.GetComponent<Move>().MoveTowards(player);
 
             switch (alertState)
             {
