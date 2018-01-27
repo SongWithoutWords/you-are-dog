@@ -1,9 +1,10 @@
 ﻿using UnityEngine;
 
+//using static MyExtensions;
+
 [RequireComponent(typeof(Move))]
 public class PlayerInput : MonoBehaviour
 {
-    public float movementForce = 1;
     void Update()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
@@ -12,6 +13,6 @@ public class PlayerInput : MonoBehaviour
 
         var move = gameObject.GetComponent<Move>();
 
-        move.AddForce(movementForce * forceVector);
+        move.AddForce(move.forcefullness * forceVector);
     }
 }

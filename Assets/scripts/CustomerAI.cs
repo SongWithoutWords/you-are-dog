@@ -3,8 +3,6 @@
 [RequireComponent(typeof(Move))]
 public class CustomerAI : AIBase
 {
-    public float forcefullness;
-
     // Use this for initialization
     void Start()
     {
@@ -30,7 +28,7 @@ public class CustomerAI : AIBase
 
             if (exit != null)
             {
-                move.MoveTowards(exit, gameObject.GetComponent<CustomerAI>().forcefullness);
+                move.MoveTowards(exit);
             }
 
             GameObject.Destroy(gameObject, 0.0f);

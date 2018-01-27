@@ -1,25 +1,30 @@
 ﻿using UnityEngine;
 
+//using Extensions;
+
 [RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
+    public float forcefullness = 1;
+
     private Vector2 movementForce = Vector2.zero;
-    public void GravitateTowards(GameObject target, float forcefullness = 1)
+
+    public void GravitateTowards(GameObject target)
     {
-        GravitateTowards((Vector2)target.transform.position, forcefullness);
+        GravitateTowards((Vector2)target.transform.position);
     }
-    public void GravitateTowards(Vector2 target, float forcefullness = 1)
+    public void GravitateTowards(Vector2 target)
     {
         Vector2 position = transform.position;
         Vector2 offsetToTarget = target - position;
         float distanceSquaredToTarget = offsetToTarget.sqrMagnitude;
         AddForce(forcefullness * offsetToTarget / distanceSquaredToTarget);
     }
-    public void MoveTowards(GameObject target, float forcefullness = 1)
+    public void MoveTowards(GameObject target)
     {
-        MoveTowards((Vector2)target.transform.position, forcefullness);
+        MoveTowards((Vector2)target.transform.position);
     }
-    public void MoveTowards(Vector2 target, float forcefullness = 1)
+    public void MoveTowards(Vector2 target)
     {
         Vector2 position = transform.position;
         Vector2 offsetToTarget = target - position;
