@@ -23,7 +23,7 @@ public class RestaurantState : MonoBehaviour
     // Use this for initialization
     void Start() {}
 
-    public void reduceAlert()
+    public void ReduceAlert()
     {
         alertLevel -= alertDecayRate;
         if ((alert == AlertState.calm || alert == AlertState.alert) && alertLevel < 0)
@@ -32,7 +32,7 @@ public class RestaurantState : MonoBehaviour
         }
     }
 
-    public void updateState()
+    public void UpdateState()
     {
         if (alertLevel >= alertThreshold)
         {
@@ -44,7 +44,7 @@ public class RestaurantState : MonoBehaviour
         }
     }
 
-    public void updateText()
+    public void UpdateText()
     {
         alertText.text = "Alert level: " + alert.ToString() + " " + alertLevel.ToString();
     }
@@ -52,8 +52,8 @@ public class RestaurantState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        reduceAlert();
-        updateState();
-        updateText();
+        ReduceAlert();
+        UpdateState();
+        UpdateText();
     }
 }
