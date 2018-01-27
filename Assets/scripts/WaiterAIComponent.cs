@@ -3,6 +3,11 @@
 [RequireComponent(typeof(Move))]
 public class WaiterAIComponent : AIBase
 {
+    void Start()
+    {
+        strategy = new RelaxedStrategy();
+    }
+
     // A strategy to wander around the restaurant.
     class WanderStrategy : IStrategy
     {
@@ -157,10 +162,5 @@ public class WaiterAIComponent : AIBase
                 default: return this;
             }
         }
-    }
-
-    void Start()
-    {
-        strategy = new RelaxedStrategy();
     }
 }
