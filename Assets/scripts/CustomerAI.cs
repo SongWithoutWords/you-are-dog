@@ -3,17 +3,25 @@
 [RequireComponent(typeof(Move))]
 public class CustomerAI : AIBase
 {
-    // Use this for initialization
+    public GameObject seat;
+    
     void Start()
     {
-        strategy = new SitStill();
+        strategy = new SitInSeat();
     }
 
-    class SitStill : IStrategy
+    class SitInSeat : IStrategy
     {
-        // Sit still and do nothing, until pandemonium breaks out
         public IStrategy Update(GameObject gameObject, AlertState alertState)
         {
+            var customerAI = gameObject.GetComponent<CustomerAI>();
+            if (customerAI.seat != null)
+            {
+                var move = gameObject.GetComponent<Move>();
+                move.MoveTowards(customerAI.seat);
+            }
+
+            // Sit in seat until Escape happens.
             return alertState >= AlertState.Escape ? (new RunForExit() as IStrategy) : this;
         }
     }
@@ -33,7 +41,7 @@ public class CustomerAI : AIBase
             var exitPosition = exit.GetComponent<Transform>().position;
             Vector2 offsetToExit2D = (gameObject.GetComponent<Transform>().position - exitPosition);
 
-            if (offsetToExit2D.sqrMagnitude < 1.0f)
+            if (offsetToExit2D.sqrMagnitude < 0.5f)
             {
                 GameObject.Destroy(gameObject, 0.0f);
             }
