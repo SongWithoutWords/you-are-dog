@@ -1,6 +1,5 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Move))]
 public class Jostle : MonoBehaviour
 {
     public delegate void JostleEventHandler(Jostle jostled);
@@ -28,7 +27,7 @@ public class Jostle : MonoBehaviour
 
         var move = gameObject.GetComponent<Move>();
         var mass = rigidBody.mass;
-        var intrinsicAcceleration = move.Force / mass;
+        var intrinsicAcceleration = move != null ? (move.Force / mass) : new Vector2(0, 0);
         var extrinsicAcceleration = acceleration - intrinsicAcceleration;
 
         if (playerCollisionState == PlayerCollisionState.Enter
