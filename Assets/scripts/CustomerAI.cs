@@ -23,7 +23,6 @@ public class CustomerAI : AIBase
         public IStrategy Update(GameObject gameObject, AlertState alertState)
         {
             var move = gameObject.GetComponent<Move>();
-
             var exit = GameObject.FindGameObjectWithTag("FrontDoor");
 
             if (exit != null)
@@ -31,7 +30,13 @@ public class CustomerAI : AIBase
                 move.MoveTowards(exit);
             }
 
-            GameObject.Destroy(gameObject, 0.0f);
+            var exitPosition = exit.GetComponent<Transform>().position;
+            Vector2 offsetToExit2D = (gameObject.GetComponent<Transform>().position - exitPosition);
+
+            if (offsetToExit2D.sqrMagnitude < 1.0f)
+            {
+                GameObject.Destroy(gameObject, 0.0f);
+            }
             return this;
         }
     }
