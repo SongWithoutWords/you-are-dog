@@ -15,16 +15,13 @@ public class RestaurantState : MonoBehaviour
     public int alertDecayRate = 1;
     public int alertThreshold = 10000;
 
-    public AlertState alert;
-    public int alertLevel;
+    public AlertState alert = AlertState.calm;
+    public int alertLevel = 0;
 
     public Text alertText;
 
     // Use this for initialization
-    void Start()
-    {
-        alert = AlertState.calm;
-    }
+    void Start() {}
 
     public void reduceAlert()
     {
