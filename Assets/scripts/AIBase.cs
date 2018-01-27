@@ -1,29 +1,17 @@
 ﻿using UnityEngine;
 
+public interface IStrategy
+{
+    IStrategy Update(GameObject gameObject, AlertState alertState);
+}
+
 public abstract class AIBase : MonoBehaviour
 {
+    protected IStrategy strategy;
+
     void Update()
     {
-        var restaurant = GameObject.FindObjectOfType<RestaurantState>();
-        switch (restaurant.alert)
-        {
-            case AlertState.calm:
-                UpdateRelaxed();
-                break;
-            case AlertState.alert:
-                UpdateAlert();
-                break;
-            case AlertState.aware:
-                UpdateAware();
-                break;
-            case AlertState.gtfo:
-                UpdateEscape();
-                break;
-        }
+        var restaurant = FindObjectOfType<RestaurantState>();
+        strategy = strategy.Update(gameObject, restaurant.alert);
     }
-
-    protected abstract void UpdateRelaxed();
-    protected abstract void UpdateAlert();
-    protected abstract void UpdateAware();
-    protected abstract void UpdateEscape();
 }
