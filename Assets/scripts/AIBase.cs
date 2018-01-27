@@ -4,9 +4,8 @@ public abstract class AIBase : MonoBehaviour
 {
     void Update()
     {
-        var restaurant = GameObject.FindGameObjectWithTag("Restaurant");
-        var restaurantComponent = restaurant.GetComponent<RestaurantState>();
-        switch (restaurantComponent.alert)
+        var restaurant = GameObject.FindObjectOfType<RestaurantState>();
+        switch (restaurant.alert)
         {
             case AlertState.calm:
                 UpdateRelaxed();
