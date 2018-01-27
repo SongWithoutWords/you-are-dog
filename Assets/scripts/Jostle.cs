@@ -3,7 +3,8 @@
 [RequireComponent(typeof(Move))]
 public class Jostle : MonoBehaviour
 {
-    public float jostleAccelerationThreshold = 1.0f;
+    public float accelerationThreshold = 1.0f;
+    public int alertAmount = 0;
     private Vector2 velocityPrev = Vector2.zero;
     void FixedUpdate()
     {
@@ -17,9 +18,10 @@ public class Jostle : MonoBehaviour
         var intrinsicAcceleration = move.Force / mass;
         var extrinsicAcceleration = acceleration - intrinsicAcceleration;
 
-        if (extrinsicAcceleration.magnitude > jostleAccelerationThreshold)
+        if (extrinsicAcceleration.magnitude > accelerationThreshold)
         {
-            print(gameObject.name + " was jostled!");
+            var restaurant = GameObject.FindObjectOfType<RestaurantState>();
+            restaurant.alert += alertAmount;
         }
     }
 }
