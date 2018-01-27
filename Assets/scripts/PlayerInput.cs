@@ -1,16 +1,17 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Move))]
 public class PlayerInput : MonoBehaviour
 {
+    public float movementForce = 1;
     void Update()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
         var forceVector = new Vector2(horizontal, vertical);
 
-        var rigidBody = gameObject.GetComponent<Rigidbody2D>();
+        var move = gameObject.GetComponent<Move>();
 
-        rigidBody.AddForce(forceVector, ForceMode2D.Impulse);
+        move.AddForce(movementForce * forceVector);
     }
 }

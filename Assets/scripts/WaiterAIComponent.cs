@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(Rigidbody2D))]
+[RequireComponent(typeof(Move))]
 public class WaiterAIComponent : AIBase
 {
     // During the relaxed state, waiters wander around the restaurant and serve customers.
@@ -25,8 +25,8 @@ public class WaiterAIComponent : AIBase
         Vector2 forceToPlayer = new Vector2(offsetToPlayer.x, offsetToPlayer.y);
         forceToPlayer /= distanceSquaredToPlayer;
 
-        var rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.AddForce(forceToPlayer);
+        var move = GetComponent<Move>();
+        move.AddForce(forceToPlayer);
     }
 
     // During the aware state, one waiter attempts to call animal control while the others bolt toward the player.
@@ -43,8 +43,8 @@ public class WaiterAIComponent : AIBase
         Vector2 forceToPlayer = new Vector2(offsetToPlayer.x, offsetToPlayer.y);
         forceToPlayer /= distanceToPlayer;
 
-        var rigidbody = GetComponent<Rigidbody2D>();
-        rigidbody.AddForce(forceToPlayer);
+        var move = GetComponent<Move>();
+        move.AddForce(forceToPlayer);
     }
 
     protected override void UpdateEscape()
