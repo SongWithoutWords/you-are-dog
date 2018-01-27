@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+public enum AlertState
+{
+    calm,
+    alert,
+    aware,
+    gtfo
+}
+
 public class RestaurantState : MonoBehaviour {
 
-    enum AlertState
-    {
-        calm,
-        alert,
-        aware,
-        gtfo
-    }
-
-    AlertState alert;
+    public AlertState alert;
 
 	// Use this for initialization
 	void Start () {
