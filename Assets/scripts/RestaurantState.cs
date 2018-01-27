@@ -10,8 +10,8 @@ public enum AlertState
     gtfo
 }
 
-public class RestaurantState : MonoBehaviour {
-
+public class RestaurantState : MonoBehaviour
+{
     public int alertDecayRate = 1;
     public int alertThreshold = 10000;
 
@@ -20,13 +20,14 @@ public class RestaurantState : MonoBehaviour {
 
     public Text alertText;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start()
     {
         alert = AlertState.calm;
-	}
-	
-    public void reduceAlert() {
+    }
+
+    public void reduceAlert()
+    {
         alertLevel -= alertDecayRate;
         if ((alert == AlertState.calm || alert == AlertState.alert) && alertLevel < 0)
         {
@@ -39,7 +40,8 @@ public class RestaurantState : MonoBehaviour {
         if (alertLevel >= alertThreshold)
         {
             alert = AlertState.alert;
-        } else
+        }
+        else
         {
             alert = AlertState.calm;
         }
@@ -50,10 +52,11 @@ public class RestaurantState : MonoBehaviour {
         alertText.text = "Alert level: " + alert.ToString() + " " + alertLevel.ToString();
     }
 
-	// Update is called once per frame
-	void Update () {
+    // Update is called once per frame
+    void Update()
+    {
         reduceAlert();
         updateState();
         updateText();
-	}
+    }
 }
