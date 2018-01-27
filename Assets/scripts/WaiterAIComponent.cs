@@ -1,36 +1,10 @@
 ﻿using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
-public class WaiterAIComponent : MonoBehaviour
+public class WaiterAIComponent : AIBase
 {
-    void Start()
-    {
-        
-    }
-
-    void Update()
-    {
-        var restaurant = GameObject.FindGameObjectWithTag("Restaurant");
-        var restaurantComponent = restaurant.GetComponent<RestaurantState>();
-        switch (restaurantComponent.alert)
-        {
-            case AlertState.calm:
-                UpdateRelaxed();
-                break;
-            case AlertState.alert:
-                UpdateAlert();
-                break;
-            case AlertState.aware:
-                UpdateAware();
-                break;
-            case AlertState.gtfo:
-                UpdateEscape();
-                break;
-        }
-    }
-
     // During the relaxed state, waiters wander around the restaurant and serve customers.
-    private void UpdateRelaxed()
+    protected override void UpdateRelaxed()
     {
         // TODO wander
         // TODO serve
@@ -38,7 +12,7 @@ public class WaiterAIComponent : MonoBehaviour
 
     // During the alert state, the waiters have a gravitational attraction toward the player.
     // However, their primary behaviour is still to wander.
-    private void UpdateAlert()
+    protected override void UpdateAlert()
     {
         // TODO wander
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -56,7 +30,7 @@ public class WaiterAIComponent : MonoBehaviour
     }
 
     // During the aware state, one waiter attempts to call animal control while the others bolt toward the player.
-    private void UpdateAware()
+    protected override void UpdateAware()
     {
         // TODO phone animal control
         var player = GameObject.FindGameObjectWithTag("Player");
@@ -73,7 +47,7 @@ public class WaiterAIComponent : MonoBehaviour
         rigidbody.AddForce(forceToPlayer);
     }
 
-    private void UpdateEscape()
+    protected override void UpdateEscape()
     {
         // TODO
     }
