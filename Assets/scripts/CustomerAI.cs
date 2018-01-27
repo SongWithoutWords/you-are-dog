@@ -3,6 +3,10 @@
 public class CustomerAI : MonoBehaviour
 {
 
+
+
+
+
     // Use this for initialization
     void Start()
     {
