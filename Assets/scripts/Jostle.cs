@@ -5,7 +5,10 @@ public class Jostle : MonoBehaviour
 {
     public float accelerationThreshold = 1.0f;
     public int alertAmount = 0;
+
     private Vector2 velocityPrev = Vector2.zero;
+    private bool isCollidingWithPlayer = false;
+
     void FixedUpdate()
     {
         var rigidBody = gameObject.GetComponent<Rigidbody2D>();
@@ -18,10 +21,26 @@ public class Jostle : MonoBehaviour
         var intrinsicAcceleration = move.Force / mass;
         var extrinsicAcceleration = acceleration - intrinsicAcceleration;
 
-        if (extrinsicAcceleration.magnitude > accelerationThreshold)
+        if (isCollidingWithPlayer && extrinsicAcceleration.magnitude > accelerationThreshold)
         {
-            var restaurant = GameObject.FindObjectOfType<RestaurantState>();
+            var restaurant = FindObjectOfType<RestaurantState>();
             restaurant.alertLevel += alertAmount;
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerInput>() != null)
+        {
+            isCollidingWithPlayer = true;
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D collision)
+    {
+        if (collision.gameObject.GetComponent<PlayerInput>() != null)
+        {
+            isCollidingWithPlayer = false;
         }
     }
 }
