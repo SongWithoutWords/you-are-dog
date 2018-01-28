@@ -64,7 +64,6 @@ GameObject:
   - component: {fileID: 114479930192017678}
   - component: {fileID: 114843454288323930}
   - component: {fileID: 114607356883211190}
-  - component: {fileID: 114428313965241854}
   m_Layer: 0
   m_Name: WaiterWithPlates
   m_TagString: Waiter
@@ -210,21 +209,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   forcefullness: 4
---- !u!114 &114428313965241854
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1638288275863984}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5480901af9d6a8d4d841b9b2c177cc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockedDown: 0
-  knockdownThreshold: 100
-  knockedPrefab: {fileID: 0}
-  velocityCoeff: 1
 --- !u!114 &114479930192017678
 MonoBehaviour:
   m_ObjectHideFlags: 1
