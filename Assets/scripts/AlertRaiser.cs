@@ -20,7 +20,7 @@ public class AlertRaiser : MonoBehaviour
         if (acceleration > collisionAccelerationThreshold
             && collision.gameObject.GetComponent<PlayerInput>() != null)
         {
-            GameObject.FindObjectOfType<RestaurantState>().alertLevel += alertLevelRaised;
+            FindObjectOfType<RestaurantState>().AddAlert(alertLevelRaised);
         }
     }
 }

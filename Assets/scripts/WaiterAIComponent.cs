@@ -8,7 +8,7 @@ public class WaiterAIComponent : AIBase
         strategy = new RelaxedStrategy();
     }
 
-    // A strategy to wander around the restaurant.
+    // A strategy to wander around the restaurant with certain interrupts to return control to the AlertState strategies.
     class WanderStrategy : IStrategy
     {
         private Vector2 targetPosition;
@@ -125,14 +125,42 @@ public class WaiterAIComponent : AIBase
         }
     }
 
+    // A waiter will call animal control when the restaurant is in the Aware state.
+    class CallAnimalControlStrategy : IStrategy
+    {
+        public IStrategy Update(GameObject gameObject, AlertState alertState)
+        {
+            // While calling animal control, the waiter guards the door.
+            var exit = GameObject.FindGameObjectWithTag("FrontDoor");
+            if (exit != null)
+            {
+                var move = gameObject.GetComponent<Move>();
+                move.MoveTowards(exit);
+            }
+
+            var restaurant = FindObjectOfType<RestaurantState>();
+            restaurant.AddCallProgress(Time.fixedDeltaTime * 1.0f);
+
+            // Calling animal control ends when the Escape state begins.
+            return (alertState >= AlertState.Escape) ? (new EscapeStrategy() as IStrategy) : this;
+        }
+    }
+
     // During the aware state, one waiter attempts to call animal control while the others bolt toward the player.
     class AwareStrategy : IStrategy
     {
         public IStrategy Update(GameObject gameObject, AlertState alertState)
         {
-            // TODO phone animal control
+            // The first waiter in the list of waiters calls animal control.
+            // This only really works if the list is stable.
+            WaiterAIComponent[] waiters = FindObjectsOfType<WaiterAIComponent>();
+            if (gameObject == waiters[0].gameObject)
+            {
+                return new CallAnimalControlStrategy();
+            }
+            
+            // Run toward the player.
             var player = GameObject.FindGameObjectWithTag("Player");
-
             gameObject.GetComponent<Move>().MoveTowards(player);
 
             switch (alertState)
@@ -146,11 +174,14 @@ public class WaiterAIComponent : AIBase
         }
     }
 
-    // TODO What do waiters do during the escape state?
+    // During the escape state, the waiters all bolt toward the player.
     class EscapeStrategy : IStrategy
     {
         public IStrategy Update(GameObject gameObject, AlertState alertState)
         {
+            var player = GameObject.FindGameObjectWithTag("Player");
+            gameObject.GetComponent<Move>().MoveTowards(player);
+
             switch (alertState)
             {
                 case AlertState.Relaxed: return new RelaxedStrategy();
