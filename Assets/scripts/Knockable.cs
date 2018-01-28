@@ -21,7 +21,8 @@ public class Knockable : MonoBehaviour {
             AudioSource audioSource = GetComponent<AudioSource>();
             if (knockdownSound != null && audioSource != null)
             {
-                audioSource.PlayOneShot(knockdownSound);
+                audioSource.enabled = true;
+                audioSource.PlayOneShot(knockdownSound, 1);
             }
         }
 
