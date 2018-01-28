@@ -5,11 +5,11 @@ GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
+  serializedVersion: 5
   m_Component:
-  - 224: {fileID: 22459506}
-  - 114: {fileID: 11401282}
-  - 222: {fileID: 22210622}
+  - component: {fileID: 22459506}
+  - component: {fileID: 11401282}
+  - component: {fileID: 22210622}
   m_Layer: 0
   m_Name: Restaurant
   m_TagString: Untagged
@@ -28,11 +28,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 168b63680a0c23e4dbe0be552741ab22, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  alertDecayRate: 1
-  alertThreshold: 5000
-  alert: 0
-  alertLevel: 0
   alertText: {fileID: 0}
+  dogCatcherPrefab: {fileID: 0}
+  mainMenuScene: scenes/RestaurantRow
+  alertDecayPerSecond: 1
+  thresholdAlert: 20
+  thresholdAware: 40
+  thresholdEscape: 60
+  alertState: 0
 --- !u!222 &22210622
 CanvasRenderer:
   m_ObjectHideFlags: 1
@@ -51,6 +54,7 @@ RectTransform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0.04611945, y: 0.21148205}

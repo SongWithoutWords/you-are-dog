@@ -20,17 +20,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4718420680504080}
   - component: {fileID: 50565182720040778}
-  - component: {fileID: 114675818890014244}
   - component: {fileID: 212522024075986318}
   - component: {fileID: 58162549758518048}
-  - component: {fileID: 114761758787914798}
-  - component: {fileID: 114666589966241146}
-  - component: {fileID: 114202097317681146}
-  - component: {fileID: 114176443711909964}
-  - component: {fileID: 114999410842106934}
-  - component: {fileID: 114826175819388974}
   m_Layer: 0
-  m_Name: Waiter
+  m_Name: KnockedWaiter
   m_TagString: Waiter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -84,96 +77,6 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.4
---- !u!114 &114176443711909964
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7cc596a358df93842af5d8435ddcd7ae, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  collisionAccelerationThreshold: 50
-  alertLevelRaised: 10
---- !u!114 &114202097317681146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 15bb9e1e5950e734fa366947ab402d61, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114666589966241146
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a90e41eb68fb9cc47912bdfbe008f3c7, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  forcefullness: 4
---- !u!114 &114675818890014244
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 92e2030e9d4cad04fa6141d8fd6066f9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114761758787914798
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12fd4d305b6d84748915cd765835802e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  strength: 1
---- !u!114 &114826175819388974
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5480901af9d6a8d4d841b9b2c177cc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockedDown: 0
-  knockdownThreshold: 100
-  knockedPrefab: {fileID: 0}
-  velocityCoeff: 1
---- !u!114 &114999410842106934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5480901af9d6a8d4d841b9b2c177cc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockedDown: 0
-  knockdownThreshold: 50
-  knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
-    type: 2}
-  velocityCoeff: 1
 --- !u!212 &212522024075986318
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -208,7 +111,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 19565cbe56659744388719826527d566, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 268a4f3b64c11324db67db7f0b74aaa5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
