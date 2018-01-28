@@ -142,7 +142,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c53e7ffba223450408fb1fa357863582, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targetScene: scenes/ItalianRestaurant
+  targetScene: scenes/RequiescatInPasta
 --- !u!61 &253224936
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -202,7 +202,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: e5f29f574b0dadf46a5c07c5fe8b8710, type: 3}
+  m_Sprite: {fileID: 21300000, guid: b97211f219f4828449a0d2d7b2bff7a4, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

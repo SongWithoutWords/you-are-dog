@@ -9,5 +9,5 @@ EditorBuildSettings:
     path: Assets/scenes/RestaurantRow.unity
     guid: 84d9a5c8327109341b52b83a04d24cf7
   - enabled: 1
-    path: Assets/scenes/ItalianRestaurant.unity
-    guid: 2698b0cd4367dce4282c029a28d62a34
+    path: Assets/scenes/RequiescatInPasta.unity
+    guid: 790921bf647001b4b8633e967cc17296
