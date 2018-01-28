@@ -120,7 +120,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d5c0d6ee5bcef054db1dab1395a56e3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  calories: 0
+  calories: 300
   wreck: {fileID: 1887526845640292, guid: b52c8fbb7a3c89c46910d614b1f08cbe, type: 2}
 --- !u!212 &212511915274916286
 SpriteRenderer:
