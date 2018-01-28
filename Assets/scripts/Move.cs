@@ -1,8 +1,5 @@
 ﻿using UnityEngine;
 
-//using Extensions;
-
-[RequireComponent(typeof(Rigidbody2D))]
 public class Move : MonoBehaviour
 {
     public float forcefullness = 1;
@@ -42,7 +39,10 @@ public class Move : MonoBehaviour
     void FixedUpdate()
     {
         var rigidBody = gameObject.GetComponent<Rigidbody2D>();
-        rigidBody.AddForce(movementForce, ForceMode2D.Force);
-        movementForce = Vector2.zero;
+        if (rigidBody != null)
+        {
+            rigidBody.AddForce(movementForce, ForceMode2D.Force);
+            movementForce = Vector2.zero;
+        }
     }
 }
