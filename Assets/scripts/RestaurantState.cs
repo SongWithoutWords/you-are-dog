@@ -12,6 +12,7 @@ public enum AlertState
 public class RestaurantState : MonoBehaviour
 {
     public Text alertText;
+    public GameObject dogCatcherPrefab;
 
     public float alertDecayPerSecond = 1;
     public float thresholdAlert = 20;
@@ -70,7 +71,23 @@ public class RestaurantState : MonoBehaviour
     private void UpdateAlertState()
     {
         var nextState = LevelToState(alertLevel);
-        if (nextState > alertState)
+        if (nextState == alertState)
+        {
+            return;
+        }
+
+        if (nextState == AlertState.Escape)
+        {
+            alertState = AlertState.Escape;
+
+            // Spawn the dog catcher when Escape begins.
+            var exit = GameObject.FindGameObjectWithTag("FrontDoor");
+            if (exit != null && dogCatcherPrefab != null)
+            {
+                Instantiate(dogCatcherPrefab, exit.transform.position, exit.transform.rotation);
+            }
+        }
+        else if (nextState > alertState)
         {
             // Add half the threshold, to prevent rapid state transitions
             alertLevel = Threshold(nextState) + ((Threshold(nextState) - Threshold(alertState)) / 2);

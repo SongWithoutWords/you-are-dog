@@ -3004,6 +3004,11 @@ Prefab:
       propertyPath: alertText
       value: 
       objectReference: {fileID: 1807286877}
+    - target: {fileID: 11401282, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
+      propertyPath: dogCatcherPrefab
+      value: 
+      objectReference: {fileID: 1260151373718220, guid: 491860a346480ea44b82e34200b71cbe,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 22210622, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
