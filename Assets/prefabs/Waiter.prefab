@@ -240,7 +240,7 @@ MonoBehaviour:
   knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
     type: 2}
   velocityCoeff: 1
-  knockdownSound: {fileID: 8300000, guid: 7ba86773cd9100446b9c1c3a85be87b0, type: 3}
+  knockdownSound: {fileID: 8300000, guid: 8758e55fdb3570342a0950201a6df14e, type: 3}
 --- !u!212 &212522024075986318
 SpriteRenderer:
   m_ObjectHideFlags: 1
