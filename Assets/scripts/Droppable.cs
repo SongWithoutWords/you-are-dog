@@ -24,9 +24,15 @@ public class Droppable : MonoBehaviour
 
     void OnDrop(Collision2D collision)
     {
-        var dropping = Instantiate(droppingPrefab);
-        dropping.transform.position = transform.position;
+        Transform transform = GetComponent<Transform>();
+
+        GameObject dropping = Instantiate(droppingPrefab);
+        float droppingX = transform.position.x;
+        float droppingY = transform.position.y;
+        float droppingZ = dropping.transform.position.z;
+        dropping.transform.position = new Vector3(droppingX, droppingY, droppingZ);
         dropping.transform.rotation = transform.rotation;
+
         var rigidBody = dropping.GetComponent<Rigidbody2D>();
         if (rigidBody != null)
         {
