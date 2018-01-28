@@ -14,9 +14,6 @@ public class AlertRaiser : MonoBehaviour
 
     public List<AlertThreshold> thresholds;
 
-    public float collisionAccelerationThreshold = 1;
-    public float alertLevelRaised = 0;
-
     void Start()
     {
         var cd = gameObject.GetComponent<CollisionDispatcher>();
@@ -50,19 +47,13 @@ public class AlertRaiser : MonoBehaviour
                 }
                 {
                     var restaurant = FindObjectOfType<RestaurantState>();
-                    if (restaurant != null)
+                    if (restaurant != null && collision.gameObject.GetComponent<PlayerInput>() != null)
                     {
                         restaurant.AddAlert(threshold.alertLevelIncrease);
                     }
                 }
                 break;
             }
-        }
-
-        if (acceleration > collisionAccelerationThreshold
-            && collision.gameObject.GetComponent<PlayerInput>() != null)
-        {
-            FindObjectOfType<RestaurantState>().AddAlert(alertLevelRaised);
         }
     }
 }

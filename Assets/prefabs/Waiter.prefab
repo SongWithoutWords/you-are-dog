@@ -181,12 +181,10 @@ MonoBehaviour:
     audioClip: {fileID: 8300000, guid: d2e5a1e63094c8a45b6bbd5c2b5e5c94, type: 3}
   - collisionThreshold: 50
     alertLevelIncrease: 10
-    audioClip: {fileID: 8300000, guid: 4ab2ccbe4ab12a848bdb808f2c4f8940, type: 3}
+    audioClip: {fileID: 8300000, guid: d2e5a1e63094c8a45b6bbd5c2b5e5c94, type: 3}
   - collisionThreshold: 75
     alertLevelIncrease: 20
     audioClip: {fileID: 8300000, guid: 8758e55fdb3570342a0950201a6df14e, type: 3}
-  collisionAccelerationThreshold: 50
-  alertLevelRaised: 10
 --- !u!114 &114202097317681146
 MonoBehaviour:
   m_ObjectHideFlags: 1
