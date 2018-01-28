@@ -22,7 +22,7 @@ public class Knockable : MonoBehaviour {
             if (knockdownSound != null && audioSource != null)
             {
                 audioSource.enabled = true;
-                audioSource.PlayOneShot(knockdownSound);
+                audioSource.PlayOneShot(knockdownSound, 1);
             }
         }
 

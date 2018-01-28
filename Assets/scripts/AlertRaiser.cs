@@ -42,6 +42,7 @@ public class AlertRaiser : MonoBehaviour
                     var audioSource = GetComponent<AudioSource>();
                     if (audioSource != null)
                     {
+                        audioSource.enabled = true;
                         audioSource.PlayOneShot(threshold.audioClip, 1);
                     }
                 }
