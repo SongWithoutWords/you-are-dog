@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 114666589966241146}
   - component: {fileID: 114202097317681146}
   - component: {fileID: 114176443711909964}
-  - component: {fileID: 114999410842106934}
   - component: {fileID: 114826175819388974}
   m_Layer: 0
   m_Name: Waiter
@@ -157,22 +156,6 @@ MonoBehaviour:
   knockedDown: 0
   knockdownThreshold: 100
   knockedPrefab: {fileID: 0}
-  velocityCoeff: 1
---- !u!114 &114999410842106934
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5480901af9d6a8d4d841b9b2c177cc14, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  knockedDown: 0
-  knockdownThreshold: 50
-  knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
-    type: 2}
   velocityCoeff: 1
 --- !u!212 &212522024075986318
 SpriteRenderer:
