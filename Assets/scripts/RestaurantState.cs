@@ -12,6 +12,7 @@ public enum AlertState
 public class RestaurantState : MonoBehaviour
 {
     public Text alertText;
+    public GameObject dogCatcherPrefab;
 
     public float alertDecayPerSecond = 1;
     public float thresholdAlert = 20;
@@ -20,25 +21,27 @@ public class RestaurantState : MonoBehaviour
 
     [HideInInspector]
     public AlertState alertState = AlertState.Relaxed;
-
-    [HideInInspector]
-    public float alertLevel = 0;
-
-    void Start()
+    private float alertLevel = 0.0f;
+    
+    public void AddAlert(float amount)
     {
-        CollisionDispatcher[] dispatchers = FindObjectsOfType<CollisionDispatcher>();
-        foreach (var dispatcher in dispatchers)
+        // Alert can only be added when the AlertState is Relaxed or Alert, not Aware or Escape.
+        if (alertState <= AlertState.Alert)
         {
-            dispatcher.OnCollisionEnter += OnCollision;
+            alertLevel += amount;
         }
     }
 
-    void OnCollision(Collision2D collision, float acceleration)
+    public void AddCallProgress(float amount)
     {
-        //alertLevel += jostled.alertAmount;
+        // Call progress can only be added when the AlertState is Aware.
+        if (alertState == AlertState.Aware)
+        {
+            alertLevel += amount;
+        }
     }
 
-    AlertState LevelToState(float level)
+    private AlertState LevelToState(float level)
     {
         return
             level >= thresholdEscape ? AlertState.Escape :
@@ -47,7 +50,7 @@ public class RestaurantState : MonoBehaviour
             AlertState.Relaxed;
     }
 
-    float Threshold(AlertState state)
+    private float Threshold(AlertState state)
     {
         return
             state >= AlertState.Escape ? thresholdEscape :
@@ -56,19 +59,38 @@ public class RestaurantState : MonoBehaviour
             0;
     }
 
-    void ReduceAlert()
+    private void DecayAlert()
     {
-        alertLevel -= alertDecayPerSecond * Time.fixedDeltaTime;
-        alertLevel = Mathf.Max(0, alertLevel);
+        if (alertState <= AlertState.Alert)
+        {
+            alertLevel -= alertDecayPerSecond * Time.fixedDeltaTime;
+            alertLevel = Mathf.Max(0, alertLevel);
+        }
     }
 
-    void UpdateState()
+    private void UpdateAlertState()
     {
         var nextState = LevelToState(alertLevel);
-        if (nextState > alertState)
+        if (nextState == alertState)
+        {
+            return;
+        }
+
+        if (nextState == AlertState.Escape)
+        {
+            alertState = AlertState.Escape;
+
+            // Spawn the dog catcher when Escape begins.
+            var exit = GameObject.FindGameObjectWithTag("FrontDoor");
+            if (exit != null && dogCatcherPrefab != null)
+            {
+                Instantiate(dogCatcherPrefab, exit.transform.position, exit.transform.rotation);
+            }
+        }
+        else if (nextState > alertState)
         {
             // Add half the threshold, to prevent rapid state transitions
-            alertLevel += (Threshold(nextState) - Threshold(alertState)) / 2;
+            alertLevel = Threshold(nextState) + ((Threshold(nextState) - Threshold(alertState)) / 2);
             alertState = nextState;
         }
         else if (alertState <= AlertState.Alert)
@@ -79,7 +101,7 @@ public class RestaurantState : MonoBehaviour
         }
     }
 
-    void UpdateText()
+    private void UpdateAlertText()
     {
         alertText.text = "Alert level: " + alertState + " " + alertLevel;
     }
@@ -87,8 +109,8 @@ public class RestaurantState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ReduceAlert();
-        UpdateState();
-        UpdateText();
+        DecayAlert();
+        UpdateAlertState();
+        UpdateAlertText();
     }
 }
