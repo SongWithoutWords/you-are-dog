@@ -66,7 +66,7 @@ GameObject:
   - component: {fileID: 114607356883211190}
   - component: {fileID: 114428313965241854}
   m_Layer: 0
-  m_Name: Waiter 1
+  m_Name: WaiterWithPlates
   m_TagString: Waiter
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -249,7 +249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockedDown: 0
   knockdownThreshold: 50
-  knockedPrefab: {fileID: 0}
+  knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
+    type: 2}
   velocityCoeff: 1
 --- !u!114 &114615680627258812
 MonoBehaviour:
