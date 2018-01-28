@@ -96,6 +96,9 @@ MonoBehaviour:
   forceMultiplierWhileUsingStamina: 1.5
   maxStaminaSeconds: 5
   staminaDisplayText: {fileID: 0}
+  sprites: []
+  animationDuration: 1
+  firstBoostAlertAmount: 40
 --- !u!114 &114240825011034830
 MonoBehaviour:
   m_ObjectHideFlags: 1
