@@ -35,8 +35,11 @@ public class PlayerInput : MonoBehaviour
         {
             if (!hasUsedBoost)
             {
-                var restaurant = GameObject.FindObjectOfType<RestaurantState>();
-                restaurant.AddAlert(firstBoostAlertAmount);
+                var restaurant = Object.FindObjectOfType<RestaurantState>();
+                if (restaurant != null)
+                {
+                    restaurant.AddAlert(firstBoostAlertAmount);
+                }
                 hasUsedBoost = true;
             }
             staminaSeconds -= Time.fixedDeltaTime;
