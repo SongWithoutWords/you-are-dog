@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public enum AlertState
@@ -6,13 +7,16 @@ public enum AlertState
     Relaxed,
     Alert,
     Aware,
-    Escape
+    Escape,
+    Caught,
+    GotAway,
 }
 
 public class RestaurantState : MonoBehaviour
 {
     public Text alertText;
     public GameObject dogCatcherPrefab;
+    public string mainMenuScene;
 
     public float alertDecayPerSecond = 1;
     public float thresholdAlert = 20;
@@ -39,6 +43,22 @@ public class RestaurantState : MonoBehaviour
         {
             alertLevel += amount;
         }
+    }
+
+    public void NotifyPlayerCaught()
+    {
+        alertState = AlertState.Caught;
+
+        // TODO actually transition out
+        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
+    }
+
+    public void NotifyPlayerGotAway()
+    {
+        alertState = AlertState.GotAway;
+
+        // TODO actually transition out
+        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
     }
 
     private AlertState LevelToState(float level)
@@ -70,33 +90,40 @@ public class RestaurantState : MonoBehaviour
 
     private void UpdateAlertState()
     {
+        // Only update the alert state if it's below Escape.
+        if (alertState >= AlertState.Escape)
+        {
+            return;
+        }
+
+        // Get the next state based on the alert level. If it hasn't changed, early out.
         var nextState = LevelToState(alertLevel);
         if (nextState == alertState)
         {
             return;
         }
 
+        // Spawn the dog catcher when Escape begins.
         if (nextState == AlertState.Escape)
         {
             alertState = AlertState.Escape;
-
-            // Spawn the dog catcher when Escape begins.
+            
             var exit = GameObject.FindGameObjectWithTag("FrontDoor");
             if (exit != null && dogCatcherPrefab != null)
             {
                 Instantiate(dogCatcherPrefab, exit.transform.position, exit.transform.rotation);
             }
         }
+        // The state is always allowed to go up.
         else if (nextState > alertState)
         {
             // Add half the threshold, to prevent rapid state transitions
             alertLevel = Threshold(nextState) + ((Threshold(nextState) - Threshold(alertState)) / 2);
             alertState = nextState;
         }
+        // We can only transition down from Alert. Once they're aware, there's no going back.
         else if (alertState <= AlertState.Alert)
         {
-            // We can only transition down from alert. 
-            // Once they're aware, there's no going back
             alertState = nextState;
         }
     }
@@ -105,8 +132,7 @@ public class RestaurantState : MonoBehaviour
     {
         alertText.text = "Alert level: " + alertState + " " + alertLevel;
     }
-
-    // Update is called once per frame
+    
     void Update()
     {
         DecayAlert();
