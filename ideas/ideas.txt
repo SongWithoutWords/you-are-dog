@@ -72,7 +72,6 @@ TODO:
 - Player getting caught mechanics
 - UI
 	- Calorie score
-	- THEY KNOW YOU ARE DOG 
 	- some alert level indicator?
 - Kids feed player
 - Animation?

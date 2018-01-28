@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739249846636220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63240415, y: 0.015324683, z: -0.125}
+  m_LocalPosition: {x: -7.43, y: -3.99, z: -0.125}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ee67151c719e24dbaf8ff9395ec4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calorieText: {fileID: 0}
 --- !u!212 &212719197044664452
 SpriteRenderer:
   m_ObjectHideFlags: 1

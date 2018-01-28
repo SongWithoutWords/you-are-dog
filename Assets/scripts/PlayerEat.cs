@@ -1,19 +1,27 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class PlayerEat : MonoBehaviour {
 
     int calories;
+    public Text calorieText;
 
 	// Use this for initialization
 	void Start () {
         calories = 0;
 	}
-	
+
+    void UpdateText()
+    {
+        calorieText.text = "Calories Consumed: " + calories;
+    }
+
 	// Update is called once per frame
-	void Update () {
-		
+	void Update () 
+    {
+        UpdateText();	
 	}
 
     void EatFood(Food food)
