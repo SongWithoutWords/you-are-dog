@@ -16,14 +16,21 @@ public class PlayerEat : MonoBehaviour {
 		
 	}
 
+    void EatFood(Food food)
+    {
+        calories += food.calories;
+        Transform t = food.GetComponent<Transform>();
+        Instantiate(food.wreck, t.position, t.rotation);
+        Destroy(food.gameObject);
+    }
+
     // Eat food on collision
     void OnTriggerEnter2D(Collider2D c)
     {
         Food food = c.gameObject.GetComponent<Food>();
         if (food != null)
         {
-            calories += food.calories;
-            Destroy(food.gameObject);
+            EatFood(food);
         }
     }
 }

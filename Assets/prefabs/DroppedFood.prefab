@@ -91,6 +91,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   calories: 200
+  wreck: {fileID: 1887526845640292, guid: b52c8fbb7a3c89c46910d614b1f08cbe, type: 2}
 --- !u!212 &212052404771299588
 SpriteRenderer:
   m_ObjectHideFlags: 1
