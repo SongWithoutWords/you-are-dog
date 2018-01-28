@@ -39,7 +39,7 @@ public class Move : MonoBehaviour
         get { return movementForce; }
     }
 
-    void Update()
+    void FixedUpdate()
     {
         var rigidBody = gameObject.GetComponent<Rigidbody2D>();
         rigidBody.AddForce(movementForce, ForceMode2D.Force);

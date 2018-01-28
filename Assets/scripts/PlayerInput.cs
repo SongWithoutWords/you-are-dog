@@ -5,7 +5,7 @@
 [RequireComponent(typeof(Move))]
 public class PlayerInput : MonoBehaviour
 {
-    void Update()
+    void FixedUpdate()
     {
         var horizontal = Input.GetAxisRaw("Horizontal");
         var vertical = Input.GetAxisRaw("Vertical");
