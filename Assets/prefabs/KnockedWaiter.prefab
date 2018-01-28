@@ -22,7 +22,8 @@ GameObject:
   - component: {fileID: 50565182720040778}
   - component: {fileID: 212522024075986318}
   - component: {fileID: 70121257703020564}
-  m_Layer: 0
+  - component: {fileID: 114499772335640948}
+  m_Layer: 8
   m_Name: KnockedWaiter
   m_TagString: Waiter
   m_Icon: {fileID: 0}
@@ -68,7 +69,7 @@ CapsuleCollider2D:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976811655316868}
-  m_Enabled: 0
+  m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
   m_IsTrigger: 0
@@ -77,6 +78,18 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0}
   m_Size: {x: 2, y: 6}
   m_Direction: 0
+--- !u!114 &114499772335640948
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976811655316868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cfe036650aaad114eaee6e933c9e6c40, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  reviveAs: {fileID: 1976811655316868, guid: 146bb3f697bbf9548bd7a9a23bc6c779, type: 2}
 --- !u!212 &212522024075986318
 SpriteRenderer:
   m_ObjectHideFlags: 1

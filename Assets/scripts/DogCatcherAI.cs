@@ -38,6 +38,12 @@ public class DogCatcherAI : AIBase
         {
             var restaurant = FindObjectOfType<RestaurantState>();
             restaurant.NotifyPlayerCaught();
+
+            // Attach the player to the dog catcher.
+            Destroy(collision.collider.GetComponent<FaceDirectionOfMotion>());
+            Destroy(collision.collider.GetComponent<Rigidbody2D>());
+            collision.collider.GetComponent<Transform>().SetParent(GetComponent<Transform>());
+
         }
     }
 }
