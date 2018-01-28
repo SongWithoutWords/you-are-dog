@@ -453,6 +453,17 @@ MonoBehaviour:
   forceMultiplierWhileUsingStamina: 1.5
   maxStaminaSeconds: 5
   staminaDisplayText: {fileID: 114219918859755066}
+  capturedSprite: {fileID: 21300000, guid: 369ad8937ad836840a7abaf6ce17b9f9, type: 3}
+  sprites:
+  - {fileID: 21300000, guid: 247ecea5a6606a245ba8d849912257f7, type: 3}
+  - {fileID: 21300000, guid: 2b854cb625f7a82418ef2d0645f58fc2, type: 3}
+  - {fileID: 21300000, guid: d2ae74364a72c6e45b68c52c21e0728c, type: 3}
+  - {fileID: 21300000, guid: 4bbb4f6a4a1410a41878d59d24558511, type: 3}
+  - {fileID: 21300000, guid: c7f9ab3954a975b4b8c1a340fce23510, type: 3}
+  - {fileID: 21300000, guid: 1156ffd7437e0494b845664fd10d3375, type: 3}
+  animationDuration: 1
+  firstBoostAlertAmount: 20
+  isCaptured: 0
 --- !u!114 &114337401091721696
 MonoBehaviour:
   m_ObjectHideFlags: 1
