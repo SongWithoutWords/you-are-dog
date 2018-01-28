@@ -2,6 +2,8 @@
 
 public class ChefAI : AIBase
 {
+    public BoxCollider2D roomArea;
+
     void Start()
     {
         strategy = new ReviveRevivables();
@@ -12,15 +14,26 @@ public class ChefAI : AIBase
     {
         public IStrategy Update(GameObject gameObject, AlertState alertState)
         {
-            Revivable[] revivables = FindObjectsOfType<Revivable>();
-            
-            if (revivables != null && revivables.Length > 0)
-            {
-                Vector2 position = gameObject.GetComponent<Transform>().position;
+            var chefAI = gameObject.GetComponent<ChefAI>();
+            var transform = gameObject.GetComponent<Transform>();
+            Vector2 position = transform.position;
 
-                Revivable closest = null;
-                float minDistanceSquared = float.MaxValue;
-                foreach (var revivable in revivables)
+            Collider2D[] collidersInRoom = new Collider2D[64];
+            int numCollidersInRoom = (chefAI.roomArea == null) ? 0 :
+                Physics2D.OverlapBox(
+                chefAI.roomArea.GetComponent<Transform>().position,
+                chefAI.roomArea.size,
+                0.0f,
+                new ContactFilter2D(),
+                collidersInRoom);
+            
+            Revivable closest = null;
+            float minDistanceSquared = float.MaxValue;
+            for (int i = 0; i < numCollidersInRoom; ++i)
+            {
+                var collider = collidersInRoom[i];
+                var revivable = collider.GetComponent<Revivable>();
+                if (revivable != null)
                 {
                     Vector2 revivablePos = revivable.GetComponent<Transform>().position;
                     float distanceSquared = (position - revivablePos).sqrMagnitude;
@@ -30,7 +43,11 @@ public class ChefAI : AIBase
                         minDistanceSquared = distanceSquared;
                     }
                 }
+            }
 
+
+            if (closest != null)
+            {
                 // If next to a waiter, wake them up.
                 if (minDistanceSquared < 2.0f)
                 {
