@@ -83,8 +83,11 @@ public class RestaurantState : MonoBehaviour
         gotAwayText.text = MakeWinText(playerEat.calories, escapeBonus);
 
         playerEat.calories += escapeBonus;
-
-        dogText.text.color = new Color(0, 0, 0, 0);
+        if (dogText.text != null)
+        {
+            dogText.text.color = new Color(0, 0, 0, 0);        
+        }
+        
         dogText.enabled = false;
         Invoke("LoadMainMenu", 5.0f);
     }

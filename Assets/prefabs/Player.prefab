@@ -103,7 +103,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90e41eb68fb9cc47912bdfbe008f3c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcefullness: 8
+  forcefullness: 6.75
 --- !u!114 &114544162648066294
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,6 +127,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d6ee67151c719e24dbaf8ff9395ec4c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  calories: 0
   calorieText: {fileID: 0}
 --- !u!212 &212719197044664452
 SpriteRenderer:
