@@ -5,8 +5,8 @@ using System.Collections;
 public class Knockable : MonoBehaviour {
 
     public bool knockedDown = false;
-    public Sprite[] sprites;
     public float knockdownThreshold;
+    public GameObject knockedPrefab;
 
 	// Use this for initialization
 	void Start () {
@@ -24,13 +24,12 @@ public class Knockable : MonoBehaviour {
     {
         knockedDown = true;
 
+        Transform transform = GetComponent<Transform>();
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();
         rbody.rotation = -90 + Mathf.Rad2Deg * Mathf.Atan2(collisionDir.y, collisionDir.x);
-        //rbody.rotation = 180;
-
-        // Switch to knocked down sprite
-        SpriteRenderer spriteRenderer = GetComponent<SpriteRenderer>();
-        spriteRenderer.sprite = sprites[1];   
+        Instantiate(knockedPrefab, transform.position, transform.rotation);
+        rbody.velocity = collisionDir;
+        Destroy(gameObject);
     }
 
     // Knock down table if collision is big enough
