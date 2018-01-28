@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 212052404771299588}
   - component: {fileID: 114699203179916846}
   - component: {fileID: 61179389916609844}
-  - component: {fileID: 114726433563812568}
+  - component: {fileID: 50728355405877794}
   m_Layer: 0
-  m_Name: DroppedFood
+  m_Name: EatenFood
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,6 +43,26 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!50 &50728355405877794
+Rigidbody2D:
+  serializedVersion: 4
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1887526845640292}
+  m_BodyType: 0
+  m_Simulated: 1
+  m_UseFullKinematicContacts: 0
+  m_UseAutoMass: 0
+  m_Mass: 1
+  m_LinearDrag: 1
+  m_AngularDrag: 1
+  m_GravityScale: 0
+  m_Material: {fileID: 0}
+  m_Interpolate: 0
+  m_SleepingMode: 1
+  m_CollisionDetection: 0
+  m_Constraints: 0
 --- !u!61 &61179389916609844
 BoxCollider2D:
   m_ObjectHideFlags: 1
@@ -52,7 +72,7 @@ BoxCollider2D:
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
@@ -79,19 +99,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 15bb9e1e5950e734fa366947ab402d61, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &114726433563812568
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1887526845640292}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d5c0d6ee5bcef054db1dab1395a56e3c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  calories: 200
-  wreck: {fileID: 1887526845640292, guid: b52c8fbb7a3c89c46910d614b1f08cbe, type: 2}
 --- !u!212 &212052404771299588
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -126,7 +133,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 28467d36c15d83841910e611681c75b9, type: 3}
+  m_Sprite: {fileID: 21300000, guid: f889701f653329b498a793a46ecad914, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
