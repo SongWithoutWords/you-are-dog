@@ -3,6 +3,8 @@
 [RequireComponent(typeof(Move))]
 public class WaiterAIComponent : AIBase
 {
+    public Sprite callAnimalControlSprite;
+
     void Start()
     {
         strategy = new RelaxedStrategy();
@@ -147,6 +149,24 @@ public class WaiterAIComponent : AIBase
     // A waiter will call animal control when the restaurant is in the Aware state.
     class CallAnimalControlStrategy : IStrategy
     {
+        private Sprite originalSprite;
+
+        public CallAnimalControlStrategy(GameObject gameObject)
+        {
+            // While calling animal control, the waiter uses a special sprite.
+            var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
+            originalSprite = spriteRenderer.sprite;
+
+            spriteRenderer.sprite = gameObject.GetComponent<WaiterAIComponent>().callAnimalControlSprite;
+
+            // When calling animal control, the waiter drops everything.
+            Droppable[] droppables = gameObject.GetComponentsInChildren<Droppable>();
+            foreach (var droppable in droppables)
+            {
+                droppable.Drop(null);
+            }
+        }
+
         public IStrategy Update(GameObject gameObject, AlertState alertState)
         {
             // While calling animal control, the waiter guards the door.
@@ -161,15 +181,22 @@ public class WaiterAIComponent : AIBase
             restaurant.AddCallProgress(Time.fixedDeltaTime * 1.0f);
 
             // Calling animal control ends when the Escape state begins or the game ends.
+            var spriteRenderer = gameObject.GetComponent<SpriteRenderer>();
             switch (alertState)
             {
                 case AlertState.Relaxed:
                 case AlertState.Alert:
-                case AlertState.Aware: return this;
-                case AlertState.Escape: return new EscapeStrategy();
+                case AlertState.Aware:
+                    return this;
+                case AlertState.Escape:
+                    spriteRenderer.sprite = originalSprite;
+                    return new EscapeStrategy();
                 case AlertState.Caught:
-                case AlertState.GotAway: return new PostGameStrategy();
-                default: return this;
+                case AlertState.GotAway:
+                    spriteRenderer.sprite = originalSprite;
+                    return new PostGameStrategy();
+                default:
+                    return this;
             }
         }
     }
@@ -184,7 +211,7 @@ public class WaiterAIComponent : AIBase
             WaiterAIComponent[] waiters = FindObjectsOfType<WaiterAIComponent>();
             if (gameObject == waiters[0].gameObject)
             {
-                return new CallAnimalControlStrategy();
+                return new CallAnimalControlStrategy(gameObject);
             }
             
             // Run toward the player.

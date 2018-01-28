@@ -215,8 +215,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc596a358df93842af5d8435ddcd7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  collisionAccelerationThreshold: 50
-  alertLevelRaised: 10
+  thresholds:
+  - collisionThreshold: 25
+    alertLevelIncrease: 5
+    audioClip: {fileID: 0}
+  - collisionThreshold: 50
+    alertLevelIncrease: 10
+    audioClip: {fileID: 0}
+  - collisionThreshold: 75
+    alertLevelIncrease: 20
+    audioClip: {fileID: 0}
 --- !u!114 &114453725252828398
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -18,11 +18,11 @@ public class Droppable : MonoBehaviour
     {
         if (acceleration > collisionDropThreshold)
         {
-            OnDrop(collision);
+            Drop(collision);
         }
     }
 
-    void OnDrop(Collision2D collision)
+    public void Drop(Collision2D collision)
     {
         Transform transform = GetComponent<Transform>();
 
@@ -34,7 +34,7 @@ public class Droppable : MonoBehaviour
         dropping.transform.rotation = transform.rotation;
 
         var rigidBody = dropping.GetComponent<Rigidbody2D>();
-        if (rigidBody != null)
+        if (rigidBody != null && collision != null)
         {
             rigidBody.velocity += collision.relativeVelocity;
         }
