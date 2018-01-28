@@ -7,6 +7,7 @@ public class Knockable : MonoBehaviour {
     public bool knockedDown = false;
     public float knockdownThreshold;
     public GameObject knockedPrefab;
+    public float velocityCoeff = 1.0f;
 
 	// Use this for initialization
 	void Start () {
@@ -26,11 +27,11 @@ public class Knockable : MonoBehaviour {
 
         Transform transform = GetComponent<Transform>();
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();
-        rbody.rotation = -90 + Mathf.Rad2Deg * Mathf.Atan2(collisionDir.y, collisionDir.x);
         GameObject wreck = Instantiate(knockedPrefab, transform.position, transform.rotation);
 
         Rigidbody2D newRbody = wreck.GetComponent<Rigidbody2D>();
-        newRbody.velocity = collisionDir*5;
+        newRbody.velocity = collisionDir * velocityCoeff;
+        newRbody.rotation = -90 + Mathf.Rad2Deg * Mathf.Atan2(collisionDir.y, collisionDir.x);
         Destroy(gameObject);
     }
 
