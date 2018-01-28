@@ -313,7 +313,6 @@ GameObject:
   - component: {fileID: 414669431}
   - component: {fileID: 414669430}
   - component: {fileID: 414669429}
-  - component: {fileID: 414669428}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -321,20 +320,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &414669428
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 114351412333097678, guid: 56e62fa221860c247a9c7f70bb2202b9,
-    type: 2}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 414669427}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d6ee67151c719e24dbaf8ff9395ec4c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  calories: 0
-  calorieText: {fileID: 0}
 --- !u!114 &414669429
 MonoBehaviour:
   m_ObjectHideFlags: 0
