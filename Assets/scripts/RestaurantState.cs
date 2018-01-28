@@ -69,7 +69,10 @@ public class RestaurantState : MonoBehaviour
         alertState = AlertState.GotAway;
         gotAwayText.color = new Color(gotAwayText.color.r, gotAwayText.color.g, gotAwayText.color.b, 255);
         gotAwayText.text = MakeWinText();
-        dogText.text.color = new Color(0, 0, 0, 0);
+        if (dogText.text != null)
+        {
+            dogText.text.color = new Color(0, 0, 0, 0);
+        }
         dogText.enabled = false;
         Invoke("LoadMainMenu", 5.0f);
     }
