@@ -37,6 +37,8 @@ GameObject:
   - component: {fileID: 212766052988125204}
   - component: {fileID: 58833847967437294}
   - component: {fileID: 50178147847692934}
+  - component: {fileID: 114123286140191136}
+  - component: {fileID: 114047024162521356}
   m_Layer: 0
   m_Name: TableWithSeats
   m_TagString: Untagged
@@ -251,6 +253,33 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1
+--- !u!114 &114047024162521356
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132168974103236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5480901af9d6a8d4d841b9b2c177cc14, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockedDown: 0
+  knockdownThreshold: 15
+  knockedPrefab: {fileID: 1255148854090116, guid: dadff3224564b194cbc9ef653ef34fd8,
+    type: 2}
+  velocityCoeff: 3
+--- !u!114 &114123286140191136
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1132168974103236}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bb9e1e5950e734fa366947ab402d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212766052988125204
 SpriteRenderer:
   m_ObjectHideFlags: 1

@@ -5,6 +5,7 @@ using UnityEngine;
 public class Food : MonoBehaviour {
 
     public int calories;
+    public GameObject wreck;
 
 	// Use this for initialization
 	void Start () {
@@ -15,4 +16,10 @@ public class Food : MonoBehaviour {
 	void Update () {
 		
 	}
+
+    void onDestroy()
+    {
+        Transform t = GetComponent<Transform>();
+        Instantiate(wreck, t.position, t.rotation);
+    }
 }

@@ -23,6 +23,8 @@ GameObject:
   - component: {fileID: 58440030620030946}
   - component: {fileID: 50562164753798040}
   - component: {fileID: 114757599861116260}
+  - component: {fileID: 114774562486069882}
+  - component: {fileID: 58550016729855818}
   m_Layer: 0
   m_Name: DroppingPlate
   m_TagString: Untagged
@@ -55,7 +57,7 @@ Rigidbody2D:
   m_UseFullKinematicContacts: 0
   m_UseAutoMass: 0
   m_Mass: 1
-  m_LinearDrag: 0
+  m_LinearDrag: 0.5
   m_AngularDrag: 0.05
   m_GravityScale: 0
   m_Material: {fileID: 0}
@@ -78,6 +80,21 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 4
+--- !u!58 &58550016729855818
+CircleCollider2D:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945262799202776}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: 0, y: 0}
+  serializedVersion: 2
+  m_Radius: 4.59
 --- !u!114 &114757599861116260
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -89,9 +106,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 39f69e19322c4ad43847452f997aff9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  velocityThreshold: 40
+  velocityThreshold: 0.5
   droppedPrefab: {fileID: 1887526845640292, guid: 01796e3303d1b704bb382f96aa7c9a3d,
     type: 2}
+--- !u!114 &114774562486069882
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1945262799202776}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d5c0d6ee5bcef054db1dab1395a56e3c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  calories: 0
+  wreck: {fileID: 1887526845640292, guid: b52c8fbb7a3c89c46910d614b1f08cbe, type: 2}
 --- !u!212 &212511915274916286
 SpriteRenderer:
   m_ObjectHideFlags: 1
