@@ -5,19 +5,24 @@ public class WaiterAIComponent : AIBase
 {
     public Sprite callAnimalControlSprite;
 
+    private Vector2 leashPosition;
+
     void Start()
     {
+        leashPosition = GetComponent<Transform>().position;
         strategy = new RelaxedStrategy();
     }
 
     // A strategy to wander around the restaurant with certain interrupts to return control to the AlertState strategies.
     class WanderStrategy : IStrategy
     {
+        private Vector2 leashPosition;
         private Vector2 targetPosition;
         private bool collidedWithPlayer = false;
 
         public WanderStrategy(GameObject gameObject)
         {
+            leashPosition = gameObject.GetComponent<WaiterAIComponent>().leashPosition;
             RandomizeTargetPosition();
 
             var collisionDispatcher = gameObject.GetComponent<CollisionDispatcher>();
@@ -78,8 +83,8 @@ public class WaiterAIComponent : AIBase
 
         private void RandomizeTargetPosition()
         {
-            targetPosition.x = Random.Range(-5.0f, 5.0f);
-            targetPosition.y = Random.Range(-4.0f, 4.0f);
+            targetPosition.x = leashPosition.x + Random.Range(-4.0f, 4.0f);
+            targetPosition.y = leashPosition.y + Random.Range(-4.0f, 4.0f);
         }
     }
 

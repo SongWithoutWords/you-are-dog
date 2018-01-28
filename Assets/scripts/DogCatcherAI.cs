@@ -34,9 +34,15 @@ public class DogCatcherAI : AIBase
 
     void OnCollisionEnter2D(Collision2D collision)
     {
-        if (collision.collider.GetComponent<PlayerInput>() != null)
+        var playerInput = collision.collider.GetComponent<PlayerInput>();
+        if (playerInput == null)
         {
-            var restaurant = FindObjectOfType<RestaurantState>();
+            return;
+        }
+
+        var restaurant = FindObjectOfType<RestaurantState>();
+        if (restaurant.alertState < AlertState.GotAway)
+        {
             restaurant.NotifyPlayerCaught();
 
             // Attach the player to the dog catcher.
@@ -44,6 +50,7 @@ public class DogCatcherAI : AIBase
             Destroy(collision.collider.GetComponent<Rigidbody2D>());
             collision.collider.GetComponent<Transform>().SetParent(GetComponent<Transform>());
 
+            playerInput.isCaptured = true;
         }
     }
 }
