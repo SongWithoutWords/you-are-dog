@@ -40,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1739249846636220}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.63240415, y: 0.015324683, z: -3}
+  m_LocalPosition: {x: -7.43, y: -3.99, z: -3}
   m_LocalScale: {x: 0.25, y: 0.25, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -96,6 +96,15 @@ MonoBehaviour:
   forceMultiplierWhileUsingStamina: 1.5
   maxStaminaSeconds: 5
   staminaDisplayText: {fileID: 0}
+  sprites:
+  - {fileID: 21300000, guid: 247ecea5a6606a245ba8d849912257f7, type: 3}
+  - {fileID: 21300000, guid: 2b854cb625f7a82418ef2d0645f58fc2, type: 3}
+  - {fileID: 21300000, guid: d2ae74364a72c6e45b68c52c21e0728c, type: 3}
+  - {fileID: 21300000, guid: 4bbb4f6a4a1410a41878d59d24558511, type: 3}
+  - {fileID: 21300000, guid: c7f9ab3954a975b4b8c1a340fce23510, type: 3}
+  - {fileID: 21300000, guid: 1156ffd7437e0494b845664fd10d3375, type: 3}
+  animationDuration: 1
+  firstBoostAlertAmount: 40
 --- !u!114 &114240825011034830
 MonoBehaviour:
   m_ObjectHideFlags: 1
