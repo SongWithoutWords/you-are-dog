@@ -1,27 +1,30 @@
 ﻿using UnityEngine;
 
-[RequireComponent(typeof(CollisionDispatcher))]
+[RequireComponent(typeof(CollisionDispatcher), typeof(AudioSource))]
 public class Knockable : MonoBehaviour {
 
     public bool knockedDown = false;
     public float knockdownThreshold;
     public GameObject knockedPrefab;
     public float velocityCoeff = 1.0f;
+    public AudioClip knockdownSound;
 
 	// Use this for initialization
 	void Start () {
         CollisionDispatcher cd = GetComponent<CollisionDispatcher>();
         cd.OnCollisionEnter += KnockTable;
 	}
-	
-	// Update is called once per frame
-	void Update () {
-	    
-	}
 
-    // 
     void OnKnockedDown(Vector2 collisionDir)
     {
+        {
+            AudioSource audioSource = GetComponent<AudioSource>();
+            if (knockdownSound != null && audioSource != null)
+            {
+                audioSource.PlayOneShot(knockdownSound);
+            }
+        }
+
         knockedDown = true;
 
         Transform transform = GetComponent<Transform>();
