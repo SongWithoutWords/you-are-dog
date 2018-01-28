@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class YouAreDogText : MonoBehaviour {
-    Text text;
+    public Text text;
     public float startTime;
 	// Use this for initialization
 	void Start () {

@@ -907,6 +907,7 @@ RectTransform:
   - {fileID: 1807286876}
   - {fileID: 1993636539}
   - {fileID: 105074007}
+  - {fileID: 2129969513}
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2450,6 +2451,14 @@ Prefab:
       value: 
       objectReference: {fileID: 1260151373718220, guid: 491860a346480ea44b82e34200b71cbe,
         type: 2}
+    - target: {fileID: 11401282, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
+      propertyPath: gotAwayText
+      value: 
+      objectReference: {fileID: 2129969514}
+    - target: {fileID: 11401282, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
+      propertyPath: dogText
+      value: 
+      objectReference: {fileID: 1993636542}
     m_RemovedComponents:
     - {fileID: 22210622, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
@@ -4322,6 +4331,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 24bac6a47a6e87c429f88e4fcc3af626, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  text: {fileID: 0}
   startTime: 0
 --- !u!1001 &2001841467
 Prefab:
@@ -4498,3 +4508,80 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!1 &2129969512
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 2129969513}
+  - component: {fileID: 2129969515}
+  - component: {fileID: 2129969514}
+  m_Layer: 5
+  m_Name: GotAwayText
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &2129969513
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129969512}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 350586737}
+  m_RootOrder: 3
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 40}
+  m_SizeDelta: {x: 400, y: 120.4}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!114 &2129969514
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129969512}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 0.8941177, g: 0.8352942, b: 0.019607844, a: 0}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_FontData:
+    m_Font: {fileID: 12800000, guid: 0d321ad12fe3d4391b506737af0972d1, type: 3}
+    m_FontSize: 20
+    m_FontStyle: 0
+    m_BestFit: 1
+    m_MinSize: 0
+    m_MaxSize: 40
+    m_Alignment: 1
+    m_AlignByGeometry: 0
+    m_RichText: 1
+    m_HorizontalOverflow: 0
+    m_VerticalOverflow: 0
+    m_LineSpacing: 1
+  m_Text: 'You got away!
+
+
+    The only pounds you''re seeing today are the ones you gained'
+--- !u!222 &2129969515
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2129969512}

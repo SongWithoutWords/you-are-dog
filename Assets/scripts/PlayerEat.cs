@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class PlayerEat : MonoBehaviour {
 
-    int calories;
+    public int calories;
     public Text calorieText;
 
 	// Use this for initialization

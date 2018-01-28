@@ -27,11 +27,11 @@ public class RestaurantState : MonoBehaviour
     public AlertState alertState = AlertState.Relaxed;
     private float alertLevel = 0.0f;
 
-    YouAreDogText dogText;
+    public YouAreDogText dogText;
+    public Text gotAwayText;
 
     void Start()
     {
-        dogText = FindObjectOfType<YouAreDogText>();
         dogText.enabled = false;
     }
 
@@ -58,10 +58,19 @@ public class RestaurantState : MonoBehaviour
         alertState = AlertState.Caught;
         Invoke("LoadMainMenu", 5.0f);
     }
-    
+
+    string MakeWinText()
+    {
+        return "You got away!\n\n You consumed " + FindObjectOfType<PlayerEat>().calories + " calories!";
+    }
+
     public void NotifyPlayerGotAway()
     {
         alertState = AlertState.GotAway;
+        gotAwayText.color = new Color(gotAwayText.color.r, gotAwayText.color.g, gotAwayText.color.b, 255);
+        gotAwayText.text = MakeWinText();
+        dogText.text.color = new Color(0, 0, 0, 0);
+        dogText.enabled = false;
         Invoke("LoadMainMenu", 5.0f);
     }
 
@@ -122,6 +131,7 @@ public class RestaurantState : MonoBehaviour
             {
                 Instantiate(dogCatcherPrefab, exit.transform.position, exit.transform.rotation);
             }
+
         }
         // The state is always allowed to go up.
         else if (nextState > alertState)
