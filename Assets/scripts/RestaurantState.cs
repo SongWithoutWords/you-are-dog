@@ -50,7 +50,7 @@ public class RestaurantState : MonoBehaviour
         alertState = AlertState.Caught;
 
         // TODO actually transition out
-        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
+        //SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
     }
 
     public void NotifyPlayerGotAway()
@@ -58,7 +58,7 @@ public class RestaurantState : MonoBehaviour
         alertState = AlertState.GotAway;
 
         // TODO actually transition out
-        SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
+        //SceneManager.LoadScene(mainMenuScene, LoadSceneMode.Single);
     }
 
     private AlertState LevelToState(float level)

@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 [RequireComponent(typeof(CollisionDispatcher))]
 public class Knockable : MonoBehaviour {
@@ -26,8 +25,13 @@ public class Knockable : MonoBehaviour {
         knockedDown = true;
 
         Transform transform = GetComponent<Transform>();
-        Rigidbody2D rbody = GetComponent<Rigidbody2D>();
-        GameObject wreck = Instantiate(knockedPrefab, transform.position, transform.rotation);
+
+        GameObject wreck = Instantiate(knockedPrefab);
+        float wreckX = transform.position.x;
+        float wreckY = transform.position.y;
+        float wreckZ = wreck.transform.position.z;
+        wreck.transform.position = new Vector3(wreckX, wreckY, wreckZ);
+        wreck.transform.rotation = transform.rotation;
 
         Rigidbody2D newRbody = wreck.GetComponent<Rigidbody2D>();
         newRbody.velocity = collisionDir * velocityCoeff;
