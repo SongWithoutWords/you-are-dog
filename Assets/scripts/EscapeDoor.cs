@@ -10,10 +10,7 @@ public class EscapeDoor : MonoBehaviour
         }
 
         var restaurant = FindObjectOfType<RestaurantState>();
-        if (restaurant.alertState == AlertState.Escape)
-        {
-            restaurant.NotifyPlayerGotAway();
-        }
+        restaurant.NotifyPlayerGotAway();
     }
 }
 

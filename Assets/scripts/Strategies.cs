@@ -18,7 +18,7 @@ namespace Strategies
             var exitPosition = exit.GetComponent<Transform>().position;
             Vector2 offsetToExit2D = (gameObject.GetComponent<Transform>().position - exitPosition);
 
-            if (offsetToExit2D.sqrMagnitude < 0.5f)
+            if (offsetToExit2D.sqrMagnitude < 1.0f)
             {
                 Object.Destroy(gameObject, 0.0f);
             }

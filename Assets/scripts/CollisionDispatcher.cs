@@ -11,6 +11,10 @@ public class CollisionDispatcher : MonoBehaviour
     float CalculateAccelerationFromCollision(Collision2D collision)
     {
         var otherBody = collision.rigidbody;
+        if (otherBody == null)
+        {
+            return 0.0f;
+        }
         var otherMass = otherBody.bodyType == RigidbodyType2D.Static ? float.MaxValue : otherBody.mass;
 
         var thisBody = gameObject.GetComponent<Rigidbody2D>();
