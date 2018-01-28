@@ -61,6 +61,10 @@ public class RestaurantState : MonoBehaviour
 
     public void NotifyPlayerCaught()
     {
+        if (alertState == AlertState.GotAway)
+        {
+            return;
+        }
         alertState = AlertState.Caught;
 
         gotAwayText.color = new Color(gotAwayText.color.r, gotAwayText.color.g, gotAwayText.color.b, 255);
@@ -78,7 +82,12 @@ public class RestaurantState : MonoBehaviour
 
     public void NotifyPlayerGotAway()
     {
+        if (alertState == AlertState.Caught)
+        {
+            return;
+        }
         alertState = AlertState.GotAway;
+
         PlayerEat playerEat = FindObjectOfType<PlayerEat>();
         int escapeBonus = (int)(playerEat.calories * escapeBonusRatio);
 
