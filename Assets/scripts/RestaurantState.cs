@@ -26,7 +26,15 @@ public class RestaurantState : MonoBehaviour
     [HideInInspector]
     public AlertState alertState = AlertState.Relaxed;
     private float alertLevel = 0.0f;
-    
+
+    YouAreDogText dogText;
+
+    void Start()
+    {
+        dogText = FindObjectOfType<YouAreDogText>();
+        dogText.enabled = false;
+    }
+
     public void AddAlert(float amount)
     {
         // Alert can only be added when the AlertState is Relaxed or Alert, not Aware or Escape.
@@ -120,6 +128,11 @@ public class RestaurantState : MonoBehaviour
             // Add half the threshold, to prevent rapid state transitions
             alertLevel = Threshold(nextState) + ((Threshold(nextState) - Threshold(alertState)) / 2);
             alertState = nextState;
+            if (alertState >= AlertState.Aware)
+            {
+                dogText.enabled = true;
+                dogText.startTime = Time.time;
+            }
         }
         // We can only transition down from Alert. Once they're aware, there's no going back.
         else if (alertState <= AlertState.Alert)
