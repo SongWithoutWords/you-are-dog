@@ -219,6 +219,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e2030e9d4cad04fa6141d8fd6066f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  callAnimalControlSprite: {fileID: 21300000, guid: fce1b29664270aa48912c4b002b90044,
+    type: 3}
 --- !u!114 &114761758787914798
 MonoBehaviour:
   m_ObjectHideFlags: 1
