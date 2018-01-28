@@ -249,7 +249,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockedDown: 0
   knockdownThreshold: 50
-  knockedPrefab: {fileID: 0}
+  knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
+    type: 2}
   velocityCoeff: 1
 --- !u!114 &114615680627258812
 MonoBehaviour:
