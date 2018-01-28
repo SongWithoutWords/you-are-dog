@@ -1,17 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Table : MonoBehaviour {
+[RequireComponent(typeof(CollisionDispatcher))]
+public class Knockable : MonoBehaviour {
 
     public bool knockedDown = false;
-    // When knocked down, this is the angle the table is facing
-    public Vector2 facingDirRad;
-
     public Sprite[] sprites;
+    public float knockdownThreshold;
 
 	// Use this for initialization
 	void Start () {
-	    
+        CollisionDispatcher cd = GetComponent<CollisionDispatcher>();
+        cd.OnCollisionEnter += KnockTable;
 	}
 	
 	// Update is called once per frame
@@ -34,9 +34,9 @@ public class Table : MonoBehaviour {
     }
 
     // Knock down table if collision is big enough
-    void OnCollisionEnter2D(Collision2D c)
+    void KnockTable(Collision2D c, float acceleration)
     {
-        if (!knockedDown)
+        if (!knockedDown && acceleration >= knockdownThreshold)
         {
             OnKnockedDown(c.relativeVelocity);
         }

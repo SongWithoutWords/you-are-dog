@@ -25,6 +25,8 @@ GameObject:
   - component: {fileID: 114780461506369562}
   - component: {fileID: 114088703946033360}
   - component: {fileID: 114453725252828398}
+  - component: {fileID: 114090461324874592}
+  - component: {fileID: 114393463816502682}
   m_Layer: 0
   m_Name: Customer
   m_TagString: Untagged
@@ -92,6 +94,30 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   seat: {fileID: 0}
+--- !u!114 &114090461324874592
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465022289585962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bb9e1e5950e734fa366947ab402d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &114393463816502682
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1465022289585962}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc596a358df93842af5d8435ddcd7ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionAccelerationThreshold: 50
+  alertLevelRaised: 10
 --- !u!114 &114453725252828398
 MonoBehaviour:
   m_ObjectHideFlags: 1
