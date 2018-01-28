@@ -216,7 +216,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 0
@@ -313,7 +313,7 @@ MonoBehaviour:
   knockedPrefab: {fileID: 1686526417934782, guid: 2c04bcb353e1aa54f973268cc80febf6,
     type: 2}
   velocityCoeff: 3
-  knockdownSound: {fileID: 0}
+  knockdownSound: {fileID: 8300000, guid: 363d15ae38de8c341919f7de151a3141, type: 3}
 --- !u!212 &212601330821069094
 SpriteRenderer:
   m_ObjectHideFlags: 1
