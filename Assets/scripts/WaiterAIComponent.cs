@@ -16,8 +16,7 @@ public class WaiterAIComponent : AIBase
 
         public WanderStrategy(GameObject gameObject)
         {
-            targetPosition.x = Random.Range(-5.0f, 5.0f);
-            targetPosition.y = Random.Range(-4.0f, 4.0f);
+            RandomizeTargetPosition();
 
             var collisionDispatcher = gameObject.GetComponent<CollisionDispatcher>();
             collisionDispatcher.OnCollisionEnter += OnCollisionEnter;
@@ -39,6 +38,8 @@ public class WaiterAIComponent : AIBase
                     case AlertState.Alert: return new AlertStrategy();
                     case AlertState.Aware: return new AwareStrategy();
                     case AlertState.Escape: return new EscapeStrategy();
+                    case AlertState.Caught:
+                    case AlertState.GotAway: return new PostGameStrategy();
                     default: return this;
                 }
             }
@@ -46,7 +47,7 @@ public class WaiterAIComponent : AIBase
             // Otherwise, the waiter applies force toward the target position.
             gameObject.GetComponent<Move>().GravitateTowards(targetPosition);
 
-            // If the restaurant is relaxed, continue wandering.
+            // If the restaurant is relaxed or the game is over, continue wandering.
             // If the restaurant is alert, wander as long as it doesn't run into the player.
             // Otherwise return control to the state strategy.
             switch (alertState)
@@ -55,6 +56,8 @@ public class WaiterAIComponent : AIBase
                 case AlertState.Alert: return collidedWithPlayer ? (new AlertStrategy() as IStrategy) : this;
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return new EscapeStrategy();
+                case AlertState.Caught: return this;
+                case AlertState.GotAway: return this;
                 default: return this;
             }
         }
@@ -65,6 +68,16 @@ public class WaiterAIComponent : AIBase
             {
                 collidedWithPlayer = true;
             }
+            else
+            {
+                RandomizeTargetPosition();
+            }
+        }
+
+        private void RandomizeTargetPosition()
+        {
+            targetPosition.x = Random.Range(-5.0f, 5.0f);
+            targetPosition.y = Random.Range(-4.0f, 4.0f);
         }
     }
 
@@ -80,6 +93,8 @@ public class WaiterAIComponent : AIBase
                 case AlertState.Alert: return new AlertStrategy();
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return new EscapeStrategy();
+                case AlertState.Caught:
+                case AlertState.GotAway: return new PostGameStrategy();
                 default: return this;
             }
         }
@@ -109,6 +124,8 @@ public class WaiterAIComponent : AIBase
                     case AlertState.Alert: return this;
                     case AlertState.Aware: return new AwareStrategy();
                     case AlertState.Escape: return new EscapeStrategy();
+                    case AlertState.Caught:
+                    case AlertState.GotAway: return new PostGameStrategy();
                     default: return this;
                 }
             }
@@ -120,6 +137,8 @@ public class WaiterAIComponent : AIBase
                 case AlertState.Alert: return new WanderStrategy(gameObject);
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return new EscapeStrategy();
+                case AlertState.Caught:
+                case AlertState.GotAway: return new PostGameStrategy();
                 default: return this;
             }
         }
@@ -141,8 +160,17 @@ public class WaiterAIComponent : AIBase
             var restaurant = FindObjectOfType<RestaurantState>();
             restaurant.AddCallProgress(Time.fixedDeltaTime * 1.0f);
 
-            // Calling animal control ends when the Escape state begins.
-            return (alertState >= AlertState.Escape) ? (new EscapeStrategy() as IStrategy) : this;
+            // Calling animal control ends when the Escape state begins or the game ends.
+            switch (alertState)
+            {
+                case AlertState.Relaxed:
+                case AlertState.Alert:
+                case AlertState.Aware: return this;
+                case AlertState.Escape: return new EscapeStrategy();
+                case AlertState.Caught:
+                case AlertState.GotAway: return new PostGameStrategy();
+                default: return this;
+            }
         }
     }
 
@@ -169,6 +197,8 @@ public class WaiterAIComponent : AIBase
                 case AlertState.Alert: return new AlertStrategy();
                 case AlertState.Aware: return this;
                 case AlertState.Escape: return new EscapeStrategy();
+                case AlertState.Caught:
+                case AlertState.GotAway: return new PostGameStrategy();
                 default: return this;
             }
         }
@@ -188,8 +218,19 @@ public class WaiterAIComponent : AIBase
                 case AlertState.Alert: return new AlertStrategy();
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return this;
+                case AlertState.Caught:
+                case AlertState.GotAway: return new PostGameStrategy();
                 default: return this;
             }
+        }
+    }
+
+    // Once the game ends, the waiter wanders.
+    class PostGameStrategy : IStrategy
+    {
+        public IStrategy Update(GameObject gameObject, AlertState alertState)
+        {
+            return new WanderStrategy(gameObject);
         }
     }
 }
