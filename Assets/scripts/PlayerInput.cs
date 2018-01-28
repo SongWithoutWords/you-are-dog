@@ -9,9 +9,13 @@ public class PlayerInput : MonoBehaviour
     public float forceMultiplierWhileUsingStamina = 1.5f;
     public float maxStaminaSeconds = 5.0f;
     public Text staminaDisplayText;
+    public Sprite capturedSprite;
     public List<Sprite> sprites;
     public float animationDuration = 1.0f;
     public float firstBoostAlertAmount = 20.0f;
+
+    [HideInInspector]
+    public bool isCaptured = false;
 
     private float staminaSeconds = 0.0f;
     private bool hasUsedBoost = false;
@@ -52,8 +56,11 @@ public class PlayerInput : MonoBehaviour
         {
             staminaDisplayText.text = "Stamina: " + staminaSeconds.ToString("0.0") + "/" + maxStaminaSeconds.ToString("0.0");
         }
-
-        if (hasUsedBoost)
+        if (isCaptured)
+        {
+            spriteRenderer.sprite = capturedSprite;
+        }
+        else if (hasUsedBoost)
         {
             timeSinceFirstBoost += Time.deltaTime;
             var numSprites = sprites.Count;
