@@ -26,16 +26,16 @@ public class RestaurantState : MonoBehaviour
 
     void Start()
     {
-        Jostle[] jostlables = FindObjectsOfType<Jostle>();
-        foreach (var jostle in jostlables)
+        CollisionDispatcher[] dispatchers = FindObjectsOfType<CollisionDispatcher>();
+        foreach (var dispatcher in dispatchers)
         {
-            jostle.RaiseJostleEvent += OnJostle;
+            dispatcher.OnCollisionEnter += OnCollision;
         }
     }
 
-    void OnJostle(Jostle jostled)
+    void OnCollision(Collision2D collision, float acceleration)
     {
-        alertLevel += jostled.alertAmount;
+        //alertLevel += jostled.alertAmount;
     }
 
     AlertState LevelToState(float level)

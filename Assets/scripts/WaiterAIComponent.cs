@@ -3,8 +3,6 @@
 [RequireComponent(typeof(Move))]
 public class WaiterAIComponent : AIBase
 {
-    public float forcefullness;
-
     void Start()
     {
         strategy = new RelaxedStrategy();
@@ -14,11 +12,15 @@ public class WaiterAIComponent : AIBase
     class WanderStrategy : IStrategy
     {
         private Vector2 targetPosition;
+        private bool collidedWithPlayer = false;
 
-        public WanderStrategy()
+        public WanderStrategy(GameObject gameObject)
         {
             targetPosition.x = Random.Range(-5.0f, 5.0f);
             targetPosition.y = Random.Range(-4.0f, 4.0f);
+
+            var collisionDispatcher = gameObject.GetComponent<CollisionDispatcher>();
+            collisionDispatcher.OnCollisionEnter += OnCollisionEnter;
         }
 
         public IStrategy Update(GameObject gameObject, AlertState alertState)
@@ -41,17 +43,27 @@ public class WaiterAIComponent : AIBase
                 }
             }
 
-            // Otherwise, the waiter applies force toward the target position so long as the restaurant is
-            // relaxed or alert.
+            // Otherwise, the waiter applies force toward the target position.
             gameObject.GetComponent<Move>().GravitateTowards(targetPosition);
 
+            // If the restaurant is relaxed, continue wandering.
+            // If the restaurant is alert, wander as long as it doesn't run into the player.
+            // Otherwise return control to the state strategy.
             switch (alertState)
             {
                 case AlertState.Relaxed: return this;
-                case AlertState.Alert: return this;
+                case AlertState.Alert: return collidedWithPlayer ? (new AlertStrategy() as IStrategy) : this;
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return new EscapeStrategy();
                 default: return this;
+            }
+        }
+
+        private void OnCollisionEnter(Collision2D collision, float acceleration)
+        {
+            if (collision.collider.GetComponent<PlayerInput>() != null)
+            {
+                collidedWithPlayer = true;
             }
         }
     }
@@ -64,7 +76,7 @@ public class WaiterAIComponent : AIBase
             // The waiter, when relaxed, wanders.
             switch (alertState)
             {
-                case AlertState.Relaxed: return new WanderStrategy();
+                case AlertState.Relaxed: return new WanderStrategy(gameObject);
                 case AlertState.Alert: return new AlertStrategy();
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return new EscapeStrategy();
@@ -105,7 +117,7 @@ public class WaiterAIComponent : AIBase
             switch (alertState)
             {
                 case AlertState.Relaxed: return new RelaxedStrategy();
-                case AlertState.Alert: return new WanderStrategy();
+                case AlertState.Alert: return new WanderStrategy(gameObject);
                 case AlertState.Aware: return new AwareStrategy();
                 case AlertState.Escape: return new EscapeStrategy();
                 default: return this;

@@ -25,7 +25,8 @@ GameObject:
   - component: {fileID: 58162549758518048}
   - component: {fileID: 114761758787914798}
   - component: {fileID: 114666589966241146}
-  - component: {fileID: 114164202460295098}
+  - component: {fileID: 114202097317681146}
+  - component: {fileID: 114176443711909964}
   m_Layer: 0
   m_Name: Waiter
   m_TagString: Waiter
@@ -81,7 +82,7 @@ CircleCollider2D:
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
   m_Radius: 1.4
---- !u!114 &114164202460295098
+--- !u!114 &114176443711909964
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -89,11 +90,22 @@ MonoBehaviour:
   m_GameObject: {fileID: 1976811655316868}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 12e8b14dfc02a614e91a2a7be881cf5b, type: 3}
+  m_Script: {fileID: 11500000, guid: 7cc596a358df93842af5d8435ddcd7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  accelerationThreshold: 3
-  alertAmount: 10
+  collisionAccelerationThreshold: 50
+  alertLevelRaised: 10
+--- !u!114 &114202097317681146
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1976811655316868}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 15bb9e1e5950e734fa366947ab402d61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114666589966241146
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -117,7 +129,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e2030e9d4cad04fa6141d8fd6066f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  forcefullness: 0
 --- !u!114 &114761758787914798
 MonoBehaviour:
   m_ObjectHideFlags: 1
