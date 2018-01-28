@@ -1,13 +1,13 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class YouAreDogText : MonoBehaviour {
+public class YouAreDogText : MonoBehaviour
+{
     public Text text;
     public float startTime;
-	// Use this for initialization
-	void Start () {
+
+	void Start()
+    {
         text = GetComponent<Text>();
 	}
 
@@ -22,8 +22,8 @@ public class YouAreDogText : MonoBehaviour {
         text.color = newColor;
     }
 	
-	// Update is called once per frame
-	void Update () {
+	void Update()
+    {
         UpdateColor();
 	}
 }

@@ -34,7 +34,6 @@ public class RestaurantState : MonoBehaviour
 
     void Start()
     {
-        dogText.enabled = false;
     }
 
     public void AddAlert(float amount)
@@ -55,40 +54,41 @@ public class RestaurantState : MonoBehaviour
         }
     }
 
+    private string MakeCaughtText()
+    {
+        return "You've been caught!\n\n You consumed " + FindObjectOfType<PlayerEat>().calories + " calories!";
+    }
+
     public void NotifyPlayerCaught()
     {
         alertState = AlertState.Caught;
+
+        gotAwayText.color = new Color(gotAwayText.color.r, gotAwayText.color.g, gotAwayText.color.b, 255);
+        gotAwayText.text = MakeCaughtText();
+
+        dogText.text.text = "";
+
         Invoke("LoadMainMenu", 5.0f);
-
     }
 
-    string MakeWinText(int baseCalories, int bonusCalories)
+    private string MakeGotAwayText(int baseCalories, int bonusCalories)
     {
-
         return "You got away!\n\n You consumed " +  baseCalories + " calories!\n" +  "Escape bonus: " + bonusCalories + "\nTotal: " + (baseCalories+bonusCalories);
-    }
-
-    string MakeLoseText()
-    {
-        return "You've been caught!\n\n You consumed " + FindObjectOfType<PlayerEat>().calories + " calories!";
     }
 
     public void NotifyPlayerGotAway()
     {
         alertState = AlertState.GotAway;
         PlayerEat playerEat = FindObjectOfType<PlayerEat>();
-        int escapeBonus = (int) ((float) playerEat.calories * escapeBonusRatio);
+        int escapeBonus = (int)(playerEat.calories * escapeBonusRatio);
 
         gotAwayText.color = new Color(gotAwayText.color.r, gotAwayText.color.g, gotAwayText.color.b, 255);
-        gotAwayText.text = MakeWinText(playerEat.calories, escapeBonus);
+        gotAwayText.text = MakeGotAwayText(playerEat.calories, escapeBonus);
 
         playerEat.calories += escapeBonus;
-        if (dogText.text != null)
-        {
-            dogText.text.color = new Color(0, 0, 0, 0);        
-        }
-        
-        dogText.enabled = false;
+
+        dogText.text.text = "";
+
         Invoke("LoadMainMenu", 5.0f);
     }
 
@@ -143,7 +143,9 @@ public class RestaurantState : MonoBehaviour
         if (nextState == AlertState.Escape)
         {
             alertState = AlertState.Escape;
-            
+            dogText.text.text = "YOU MUST ESCAPE";
+            dogText.startTime = Time.time;
+
             var exit = GameObject.FindGameObjectWithTag("FrontDoor");
             if (exit != null && dogCatcherPrefab != null)
             {
@@ -157,15 +159,25 @@ public class RestaurantState : MonoBehaviour
             // Add half the threshold, to prevent rapid state transitions
             alertLevel = Threshold(nextState) + ((Threshold(nextState) - Threshold(alertState)) / 2);
             alertState = nextState;
-            if (alertState >= AlertState.Aware)
+
+            switch (alertState)
             {
-                dogText.enabled = true;
-                dogText.startTime = Time.time;
+                case AlertState.Alert:
+                    dogText.text.text = "THEY GROW SUSPICIOUS";
+                    dogText.startTime = Time.time;
+                    break;
+                case AlertState.Aware:
+                    dogText.text.text = "THEY KNOW YOU ARE DOG";
+                    dogText.startTime = Time.time;
+                    break;
+                default: break;
             }
         }
         // We can only transition down from Alert. Once they're aware, there's no going back.
         else if (alertState <= AlertState.Alert)
         {
+            dogText.text.text = "";
+
             alertState = nextState;
         }
     }
