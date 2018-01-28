@@ -8,6 +8,27 @@ public class CustomerAI : AIBase
     void Start()
     {
         strategy = new SitInSeat();
+
+        if (seat == null)
+        {
+            Vector2 position = GetComponent<Transform>().position;
+            GameObject[] seats = GameObject.FindGameObjectsWithTag("Seat");
+
+            GameObject closest = null;
+            float minDistanceSquared = float.MaxValue;
+            foreach (var candidate in seats)
+            {
+                Vector2 candidatePos = candidate.GetComponent<Transform>().position;
+                float distanceSquared = (position - candidatePos).sqrMagnitude;
+                if (distanceSquared < minDistanceSquared)
+                {
+                    closest = candidate;
+                    minDistanceSquared = distanceSquared;
+                }
+            }
+
+            seat = closest;
+        }
     }
 
     class SitInSeat : IStrategy
