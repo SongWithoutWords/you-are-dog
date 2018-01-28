@@ -3,8 +3,6 @@
 [RequireComponent(typeof(Move))]
 public class WaiterAIComponent : AIBase
 {
-    public float forcefullness;
-
     void Start()
     {
         strategy = new RelaxedStrategy();
