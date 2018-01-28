@@ -292,6 +292,11 @@ Prefab:
       propertyPath: m_AnchoredPosition.y
       value: -200
       objectReference: {fileID: 0}
+    - target: {fileID: 114281708728885508, guid: 16eccb319b617a74aaddeaecfed840ae,
+        type: 2}
+      propertyPath: m_Text
+      value: 'Stamina:'
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16eccb319b617a74aaddeaecfed840ae, type: 2}
   m_IsPrefabParent: 0
@@ -1202,6 +1207,12 @@ GameObject:
   m_PrefabParentObject: {fileID: 1739249846636220, guid: 856f368f0025e264aa1606a020a11855,
     type: 2}
   m_PrefabInternal: {fileID: 1790765215}
+--- !u!114 &759326103 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114587530818672302, guid: 16eccb319b617a74aaddeaecfed840ae,
+    type: 2}
+  m_PrefabInternal: {fileID: 73217752}
+  m_Script: {fileID: 708705254, guid: f70555f144d8491a825f0804e09c671c, type: 3}
 --- !u!1 &793929842
 GameObject:
   m_ObjectHideFlags: 0
@@ -3956,10 +3967,6 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
       propertyPath: m_LocalPosition.x
       value: -7.43
       objectReference: {fileID: 0}
@@ -3967,11 +3974,40 @@ Prefab:
       propertyPath: m_LocalPosition.y
       value: -3.99
       objectReference: {fileID: 0}
+    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -3
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4182524558558276, guid: 856f368f0025e264aa1606a020a11855, type: 2}
+      propertyPath: m_RootOrder
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114061076736336918, guid: 856f368f0025e264aa1606a020a11855,
+        type: 2}
+      propertyPath: staminaDisplayText
+      value: 
+      objectReference: {fileID: 105074008}
     - target: {fileID: 114959894261057508, guid: 856f368f0025e264aa1606a020a11855,
         type: 2}
       propertyPath: calorieText
       value: 
-      objectReference: {fileID: 105074008}
+      objectReference: {fileID: 759326103}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 856f368f0025e264aa1606a020a11855, type: 2}
   m_IsPrefabParent: 0
