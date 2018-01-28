@@ -27,8 +27,10 @@ public class Knockable : MonoBehaviour {
         Transform transform = GetComponent<Transform>();
         Rigidbody2D rbody = GetComponent<Rigidbody2D>();
         rbody.rotation = -90 + Mathf.Rad2Deg * Mathf.Atan2(collisionDir.y, collisionDir.x);
-        Instantiate(knockedPrefab, transform.position, transform.rotation);
-        rbody.velocity = collisionDir;
+        GameObject wreck = Instantiate(knockedPrefab, transform.position, transform.rotation);
+
+        Rigidbody2D newRbody = wreck.GetComponent<Rigidbody2D>();
+        newRbody.velocity = collisionDir*5;
         Destroy(gameObject);
     }
 
