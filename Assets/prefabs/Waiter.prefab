@@ -43,7 +43,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1976811655316868}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0.1}
   m_LocalScale: {x: 0.38, y: 0.38, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -157,6 +157,7 @@ MonoBehaviour:
   knockedDown: 0
   knockdownThreshold: 100
   knockedPrefab: {fileID: 0}
+  velocityCoeff: 1
 --- !u!114 &114999410842106934
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -170,7 +171,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockedDown: 0
   knockdownThreshold: 50
-  knockedPrefab: {fileID: 0}
+  knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
+    type: 2}
+  velocityCoeff: 1
 --- !u!212 &212522024075986318
 SpriteRenderer:
   m_ObjectHideFlags: 1
