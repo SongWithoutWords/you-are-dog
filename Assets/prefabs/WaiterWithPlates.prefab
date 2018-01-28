@@ -197,6 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92e2030e9d4cad04fa6141d8fd6066f9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  callAnimalControlSprite: {fileID: 21300000, guid: fce1b29664270aa48912c4b002b90044,
+    type: 3}
 --- !u!114 &114339814336590588
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -236,6 +238,7 @@ MonoBehaviour:
   knockedPrefab: {fileID: 1976811655316868, guid: 3fa66e15fa462704e8c6b1bcae93518b,
     type: 2}
   velocityCoeff: 1
+  knockdownSound: {fileID: 0}
 --- !u!114 &114615680627258812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -270,6 +273,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7cc596a358df93842af5d8435ddcd7ae, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  thresholds: []
   collisionAccelerationThreshold: 50
   alertLevelRaised: 10
 --- !u!212 &212407737704633200
