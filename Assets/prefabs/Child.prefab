@@ -30,7 +30,7 @@ GameObject:
   - component: {fileID: 82549390772298758}
   - component: {fileID: 114087968170057182}
   m_Layer: 0
-  m_Name: Customer
+  m_Name: Child
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -42,9 +42,9 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1465022289585962}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.6674757, y: -0.01996231, z: -0.55496675}
-  m_LocalScale: {x: 0.2, y: 0.2, z: 1}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -1}
+  m_LocalScale: {x: 0.35, y: 0.35, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -83,7 +83,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0.040909763, y: 0.2}
   serializedVersion: 2
-  m_Radius: 3.5
+  m_Radius: 1.4
 --- !u!82 &82549390772298758
 AudioSource:
   m_ObjectHideFlags: 1
@@ -177,7 +177,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   knockedDown: 0
   knockdownThreshold: 75
-  knockedPrefab: {fileID: 1739349702738620, guid: 4ca75dc09c40cb8449d1bcae203b2e78,
+  knockedPrefab: {fileID: 1739349702738620, guid: 96391b2674654fb4b91741af0bb9390a,
     type: 2}
   velocityCoeff: 1
   knockdownSound: {fileID: 8300000, guid: 7ba86773cd9100446b9c1c3a85be87b0, type: 3}
@@ -283,7 +283,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 07adb2b99074a8540951e159b3697fdb, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 09a1767474b01cb469cb002697bf2cd2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
