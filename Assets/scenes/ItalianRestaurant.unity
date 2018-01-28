@@ -2459,6 +2459,10 @@ Prefab:
       propertyPath: dogText
       value: 
       objectReference: {fileID: 1993636542}
+    - target: {fileID: 11401282, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
+      propertyPath: escapeBonusRatio
+      value: 0.2
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 22210622, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 71edca244ef03824b82d648e4e17b09d, type: 2}

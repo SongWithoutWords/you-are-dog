@@ -23,6 +23,8 @@ public class RestaurantState : MonoBehaviour
     public float thresholdAware = 40;
     public float thresholdEscape = 60;
 
+    public float escapeBonusRatio;
+
     [HideInInspector]
     public AlertState alertState = AlertState.Relaxed;
     private float alertLevel = 0.0f;
@@ -57,18 +59,31 @@ public class RestaurantState : MonoBehaviour
     {
         alertState = AlertState.Caught;
         Invoke("LoadMainMenu", 5.0f);
+
     }
 
-    string MakeWinText()
+    string MakeWinText(int baseCalories, int bonusCalories)
     {
-        return "You got away!\n\n You consumed " + FindObjectOfType<PlayerEat>().calories + " calories!";
+
+        return "You got away!\n\n You consumed " +  baseCalories + " calories!\n" +  "Escape bonus: " + bonusCalories + "\nTotal: " + (baseCalories+bonusCalories);
+    }
+
+    string MakeLoseText()
+    {
+        return "You've been caught!\n\n You consumed " + FindObjectOfType<PlayerEat>().calories + " calories!";
     }
 
     public void NotifyPlayerGotAway()
     {
         alertState = AlertState.GotAway;
+        PlayerEat playerEat = FindObjectOfType<PlayerEat>();
+        int escapeBonus = (int) ((float) playerEat.calories * escapeBonusRatio);
+
         gotAwayText.color = new Color(gotAwayText.color.r, gotAwayText.color.g, gotAwayText.color.b, 255);
-        gotAwayText.text = MakeWinText();
+        gotAwayText.text = MakeWinText(playerEat.calories, escapeBonus);
+
+        playerEat.calories += escapeBonus;
+
         dogText.text.color = new Color(0, 0, 0, 0);
         dogText.enabled = false;
         Invoke("LoadMainMenu", 5.0f);
