@@ -278,15 +278,20 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 1584997871730370, guid: 16eccb319b617a74aaddeaecfed840ae, type: 2}
-      propertyPath: m_Name
-      value: Canvas
-      objectReference: {fileID: 0}
     - target: {fileID: 223592842982286140, guid: 16eccb319b617a74aaddeaecfed840ae,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 104399077}
+    - target: {fileID: 1584997871730370, guid: 16eccb319b617a74aaddeaecfed840ae, type: 2}
+      propertyPath: m_Name
+      value: Canvas
+      objectReference: {fileID: 0}
+    - target: {fileID: 224521606870336600, guid: 16eccb319b617a74aaddeaecfed840ae,
+        type: 2}
+      propertyPath: m_AnchoredPosition.y
+      value: -200
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 16eccb319b617a74aaddeaecfed840ae, type: 2}
   m_IsPrefabParent: 0
