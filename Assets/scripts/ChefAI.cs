@@ -7,6 +7,7 @@ public class ChefAI : AIBase
     void Start()
     {
         strategy = new ReviveRevivables();
+        restaurant = FindObjectOfType<RestaurantState>();
     }
 
     // When the chef is not aware of the player, he walks toward revivable objects and revives them.

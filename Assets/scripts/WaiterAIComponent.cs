@@ -11,6 +11,7 @@ public class WaiterAIComponent : AIBase
     {
         leashPosition = GetComponent<Transform>().position;
         strategy = new RelaxedStrategy();
+        restaurant = FindObjectOfType<RestaurantState>();
     }
 
     // A strategy to wander around the restaurant with certain interrupts to return control to the AlertState strategies.

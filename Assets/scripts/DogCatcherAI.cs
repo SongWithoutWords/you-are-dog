@@ -6,6 +6,7 @@ public class DogCatcherAI : AIBase
     void Start()
     {
         strategy = new PursuePlayer();
+        restaurant = FindObjectOfType<RestaurantState>();
     }
     
     class PursuePlayer : IStrategy

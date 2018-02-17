@@ -8,6 +8,7 @@ public class CustomerAI : AIBase
     void Start()
     {
         strategy = new SitInSeat();
+        restaurant = FindObjectOfType<RestaurantState>();
 
         if (seat == null)
         {

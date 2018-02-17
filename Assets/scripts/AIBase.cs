@@ -8,10 +8,10 @@ public interface IStrategy
 public abstract class AIBase : MonoBehaviour
 {
     protected IStrategy strategy;
-
+    protected RestaurantState restaurant;
+    
     void FixedUpdate()
     {
-        var restaurant = FindObjectOfType<RestaurantState>();
         strategy = strategy.Update(gameObject, restaurant.alertState);
     }
 }
